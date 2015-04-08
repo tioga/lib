@@ -2,7 +2,7 @@
 
 package org.tiogasolutions.lib.spring.couchace;
 
-import com.couchace.core.api.CouchServer;
+import org.tiogasolutions.couchace.core.api.CouchServer;
 import java.io.IOException;
 import java.net.*;
 import java.util.*;

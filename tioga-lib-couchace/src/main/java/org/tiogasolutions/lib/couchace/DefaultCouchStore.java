@@ -1,15 +1,15 @@
 package org.tiogasolutions.lib.couchace;
 
-import com.couchace.core.api.CouchDatabase;
-import com.couchace.core.api.CouchException;
-import com.couchace.core.api.CouchServer;
-import com.couchace.core.api.meta.AnnotationCouchMetaBuilder;
-import com.couchace.core.api.meta.CouchEntityMeta;
-import com.couchace.core.api.query.CouchViewQuery;
-import com.couchace.core.api.request.GetEntityRequest;
-import com.couchace.core.api.response.GetEntityResponse;
-import com.couchace.core.api.response.HeadResponse;
-import com.couchace.core.api.response.WriteResponse;
+import org.tiogasolutions.couchace.core.api.CouchDatabase;
+import org.tiogasolutions.couchace.core.api.CouchException;
+import org.tiogasolutions.couchace.core.api.CouchServer;
+import org.tiogasolutions.couchace.core.api.meta.AnnotationCouchMetaBuilder;
+import org.tiogasolutions.couchace.core.api.meta.CouchEntityMeta;
+import org.tiogasolutions.couchace.core.api.query.CouchViewQuery;
+import org.tiogasolutions.couchace.core.api.request.GetEntityRequest;
+import org.tiogasolutions.couchace.core.api.response.GetEntityResponse;
+import org.tiogasolutions.couchace.core.api.response.HeadResponse;
+import org.tiogasolutions.couchace.core.api.response.WriteResponse;
 import org.tiogasolutions.dev.common.ReflectUtils;
 import org.tiogasolutions.dev.common.exceptions.ExceptionUtils;
 

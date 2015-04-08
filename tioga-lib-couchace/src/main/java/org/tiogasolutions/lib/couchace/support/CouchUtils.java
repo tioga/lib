@@ -1,7 +1,7 @@
 package org.tiogasolutions.lib.couchace.support;
 
-import com.couchace.core.api.*;
-import com.couchace.core.api.response.*;
+import org.tiogasolutions.couchace.core.api.*;
+import org.tiogasolutions.couchace.core.api.response.*;
 import java.io.*;
 import java.util.*;
 import org.apache.commons.logging.*;

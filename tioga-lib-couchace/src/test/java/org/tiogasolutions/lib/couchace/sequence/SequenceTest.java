@@ -1,6 +1,6 @@
 package org.tiogasolutions.lib.couchace.sequence;
 
-import com.couchace.core.api.CouchException;
+import org.tiogasolutions.couchace.core.api.CouchException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

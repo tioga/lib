@@ -1,9 +1,9 @@
 // Copyright (c) 2010-2014, Munchie Monster, LLC.
 package org.tiogasolutions.lib.couchace.app;
 
-import com.couchace.annotations.CouchEntity;
-import com.couchace.annotations.CouchId;
-import com.couchace.annotations.CouchRevision;
+import org.tiogasolutions.couchace.annotations.CouchEntity;
+import org.tiogasolutions.couchace.annotations.CouchId;
+import org.tiogasolutions.couchace.annotations.CouchRevision;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

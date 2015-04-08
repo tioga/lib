@@ -1,9 +1,9 @@
 package org.tiogasolutions.lib.couchace.sequence;
 
-import com.couchace.annotations.CouchEntity;
-import com.couchace.annotations.CouchId;
-import com.couchace.annotations.CouchRevision;
-import com.couchace.core.api.CouchException;
+import org.tiogasolutions.couchace.annotations.CouchEntity;
+import org.tiogasolutions.couchace.annotations.CouchId;
+import org.tiogasolutions.couchace.annotations.CouchRevision;
+import org.tiogasolutions.couchace.core.api.CouchException;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,7 +1,7 @@
 // Copyright (c) 2010-2014, Munchie Monster, LLC.
 package org.tiogasolutions.lib.spring.couchace;
 
-import com.couchace.core.api.CouchServer;
+import org.tiogasolutions.couchace.core.api.CouchServer;
 import org.springframework.core.io.*;
 import org.tiogasolutions.lib.couchace.app.AppConfig;
 import org.tiogasolutions.lib.couchace.app.AppConfigStore;

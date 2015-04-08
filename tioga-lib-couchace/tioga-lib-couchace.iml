@@ -29,10 +29,6 @@
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.5.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.5.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.testng:testng:6.8.21" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.couchace:couchace-annotations:1.4.2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.couchace:couchace-core:1.4.2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.couchace:couchace-jersey:1.4.2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.couchace:couchace-jackson:1.4.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.glassfish.jersey.core:jersey-common:2.16" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.glassfish.jersey.media:jersey-media-multipart:2.16" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.glassfish.jersey.core:jersey-client:2.16" level="project" />
@@ -47,5 +43,9 @@
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-domain:4.1.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-jackson:4.1.7" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-common:4.1.4" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.couchace:tioga-couchace-annotations:1.4.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.couchace:tioga-couchace-core:1.4.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.couchace:tioga-couchace-jersey:1.4.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.couchace:tioga-couchace-jackson:1.4.2" level="project" />
   </component>
 </module>

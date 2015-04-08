@@ -1,7 +1,7 @@
 package org.tiogasolutions.lib.couchace.sequence;
 
-import com.couchace.core.api.CouchServer;
-import com.couchace.core.api.response.WriteResponse;
+import org.tiogasolutions.couchace.core.api.CouchServer;
+import org.tiogasolutions.couchace.core.api.response.WriteResponse;
 import org.tiogasolutions.lib.couchace.DefaultCouchStore;
 
 public class SequenceStore extends DefaultCouchStore<Sequence> {

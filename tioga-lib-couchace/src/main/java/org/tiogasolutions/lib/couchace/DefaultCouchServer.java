@@ -1,12 +1,12 @@
 package org.tiogasolutions.lib.couchace;
 
-import com.couchace.core.api.CouchServer;
-import com.couchace.core.api.CouchSetup;
-import com.couchace.core.api.http.CouchHttpException;
-import com.couchace.core.spi.http.CouchHttpClient;
-import com.couchace.core.spi.json.CouchJsonStrategy;
-import com.couchace.jackson.JacksonCouchJsonStrategy;
-import com.couchace.jersey.JerseyCouchHttpClient;
+import org.tiogasolutions.couchace.core.api.CouchServer;
+import org.tiogasolutions.couchace.core.api.CouchSetup;
+import org.tiogasolutions.couchace.core.api.http.CouchHttpException;
+import org.tiogasolutions.couchace.core.spi.http.CouchHttpClient;
+import org.tiogasolutions.couchace.core.spi.json.CouchJsonStrategy;
+import org.tiogasolutions.couchace.jackson.JacksonCouchJsonStrategy;
+import org.tiogasolutions.couchace.jersey.JerseyCouchHttpClient;
 import com.fasterxml.jackson.databind.Module;
 import org.tiogasolutions.dev.common.EnvUtils;
 import org.tiogasolutions.dev.jackson.TiogaJacksonModule;

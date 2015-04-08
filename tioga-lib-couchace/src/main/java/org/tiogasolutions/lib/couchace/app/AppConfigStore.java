@@ -1,7 +1,7 @@
 // Copyright (c) 2010-2014, Munchie Monster, LLC.
 package org.tiogasolutions.lib.couchace.app;
 
-import com.couchace.core.api.CouchServer;
+import org.tiogasolutions.couchace.core.api.CouchServer;
 import org.tiogasolutions.lib.couchace.DefaultCouchStore;
 
 public class AppConfigStore extends DefaultCouchStore<AppConfig> {
