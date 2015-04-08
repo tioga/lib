@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="C:/tools/gradle-1.11" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/tioga-lib-couchace" />
+            <option value="$PROJECT_DIR$/tioga-lib-jaxrs" />
+            <option value="$PROJECT_DIR$/tioga-lib-jaxrs-jackson" />
+            <option value="$PROJECT_DIR$/tioga-lib-joda" />
+            <option value="$PROJECT_DIR$/tioga-lib-selenium" />
+            <option value="$PROJECT_DIR$/tioga-lib-servlet" />
+            <option value="$PROJECT_DIR$/tioga-lib-spring-amazon" />
+            <option value="$PROJECT_DIR$/tioga-lib-spring-couchace" />
+            <option value="$PROJECT_DIR$/tioga-lib-spring-security" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
