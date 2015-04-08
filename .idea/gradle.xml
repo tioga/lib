@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/tioga-lib-spring-amazon" />
             <option value="$PROJECT_DIR$/tioga-lib-spring-couchace" />
             <option value="$PROJECT_DIR$/tioga-lib-spring-security" />
+            <option value="$PROJECT_DIR$/tioga-lib-thymeleaf" />
           </set>
         </option>
       </GradleProjectSettings>
