@@ -130,6 +130,30 @@ public class SimpleRestClient {
   }
 
 
+
+  public void put(String subUrl) {
+    put(null, subUrl, null);
+  }
+
+  public void put(String subUrl, Object entity) {
+    put(null, subUrl, entity);
+  }
+
+  public <T> T put(Class<T> returnType, String subUrl) {
+    return put(returnType, subUrl, null);
+  }
+
+  public <T> T put(Class<T> returnType, String subUrl, Object entity) {
+
+    Invocation.Builder builder = builder(subUrl, Collections.<String,Object>emptyMap(), MediaType.APPLICATION_JSON);
+    String json = (entity == null) ? null : translator.toJson(entity);
+
+    Response response = builder.put(Entity.entity(json, MediaType.APPLICATION_JSON_TYPE));
+    return translateResponse(returnType, response);
+  }
+
+
+
   public void post(String subUrl) {
     post(null, subUrl, null);
   }
