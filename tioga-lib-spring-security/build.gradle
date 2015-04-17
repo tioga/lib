@@ -36,11 +36,8 @@ project(':tioga-lib-spring-security') {
     compile("org.springframework:spring-web:$version") {force = true}
     compile("org.springframework:spring-expression:$version") {force = true}
 
-    // Fixing transitive dependency problem with jackson-databind
-    compile("com.fasterxml.jackson.core:jackson-annotations:2.5.1") {force = true}
-
     testCompile ("org.testng:testng:6.8.21")
   }
 
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle")
+  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
 }

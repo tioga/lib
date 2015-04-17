@@ -28,5 +28,5 @@ project(':tioga-lib-servlet') {
         testCompile ("org.testng:testng:6.8.21")
     }
 
-    apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle")
+    apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
 }

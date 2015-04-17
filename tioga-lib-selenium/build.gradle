@@ -20,11 +20,11 @@ project(':tioga-lib-selenium') {
     compile("org.seleniumhq.selenium:selenium-java:2.45.0")
 
     compile("xml-apis:xml-apis:1.4.01") {force = true}
-    compile("commons-codec:commons-codec:1.9") {force = true}
-    compile("org.apache.httpcomponents:httpclient:4.3.6") {force = true}
+    compile("commons-codec:commons-codec:1.10") {force = true}
+    compile("org.apache.httpcomponents:httpclient:4.4.1") {force = true}
 
     testCompile ("org.testng:testng:6.8.21")
   }
 
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle")
+  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
 }
