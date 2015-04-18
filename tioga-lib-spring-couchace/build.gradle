@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 project(':tioga-lib-spring-couchace') {
-  version = "1.0.13"
+  version = "1.0.14"
 
   dependencies {
     compile(project(":tioga-lib-couchace"))

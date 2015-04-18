@@ -32,9 +32,11 @@ subprojects {
   sourceCompatibility = "1.8"
 
   configurations.all({
-    resolutionStrategy({
-      failOnVersionConflict();
-    })
+    resolutionStrategy {
+      if (System.getProperty("no-fail-version-conflict") != "true") {
+        failOnVersionConflict()
+      }
+    }
   })
 
   ext {

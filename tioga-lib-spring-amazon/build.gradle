@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 project(':tioga-lib-spring-amazon') {
-  version = "1.0.5"
+  version = "1.0.6"
 
   dependencies {
     compile("org.tiogasolutions.dev:tioga-dev-common:4.+")
-    compile("com.amazonaws:aws-java-sdk:1.9.30")
+    compile("com.amazonaws:aws-java-sdk:1.9.31")
     compile("org.springframework:spring-beans:4.1.6.RELEASE")
 
     compile("commons-logging:commons-logging:1.2") {force = true}

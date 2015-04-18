@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 project(':tioga-lib-joda') {
-  version = "4.1.4"
+  version = "4.1.5"
 
   dependencies {
     compile("org.tiogasolutions.dev:tioga-dev-common:4.+")
 
     compile ("org.joda:joda-money:0.10.0")
     compile("javax.ws.rs:javax.ws.rs-api:2.0.1")
-    compile ("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.5.0")
+    compile ("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.5.1")
 
     testCompile("org.tiogasolutions.dev:tioga-dev-jackson:4.+")
     testCompile ("org.testng:testng:6.8.21")
