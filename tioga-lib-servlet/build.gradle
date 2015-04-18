@@ -17,16 +17,16 @@ project(':tioga-lib-servlet') {
     version = "4.1.4"
 
     dependencies {
-        compile("org.tiogasolutions.dev:tioga-dev-common:4.1.4")
+        compile("org.tiogasolutions.dev:tioga-dev-common:4.+")
 
         compile("javax.servlet.jsp:jsp-api:2.2.1-b03")
         compile("javax.servlet:javax.servlet-api:3.1.0")
 
         compile("log4j:log4j:1.2.17")
-        compile("commons-logging:commons-logging:1.2")
+        compile("commons-logging:commons-logging:1.2") {force = true}
 
         testCompile ("org.testng:testng:6.8.21")
     }
 
-    apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
+    apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }

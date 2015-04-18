@@ -17,15 +17,15 @@ project(':tioga-lib-joda') {
   version = "4.1.4"
 
   dependencies {
-    compile("org.tiogasolutions.dev:tioga-dev-common:4.1.4")
+    compile("org.tiogasolutions.dev:tioga-dev-common:4.+")
 
     compile ("org.joda:joda-money:0.10.0")
     compile("javax.ws.rs:javax.ws.rs-api:2.0.1")
-    compile ("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.5.2")
+    compile ("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.5.0")
 
-    testCompile("org.tiogasolutions.dev:tioga-dev-jackson:4.1.8")
+    testCompile("org.tiogasolutions.dev:tioga-dev-jackson:4.+")
     testCompile ("org.testng:testng:6.8.21")
   }
 
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
+  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }

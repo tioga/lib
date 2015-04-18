@@ -19,7 +19,7 @@ project(':tioga-lib-spring-security') {
   dependencies {
     compile(project(":tioga-lib-jaxrs-jackson"))
 
-    compile("commons-logging:commons-logging:1.2")
+    compile("commons-logging:commons-logging:1.2") {force = true}
     compile("log4j:log4j:1.2.17")
 
     def version = "3.2.6.RELEASE"
@@ -39,5 +39,5 @@ project(':tioga-lib-spring-security') {
     testCompile ("org.testng:testng:6.8.21")
   }
 
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
+  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }

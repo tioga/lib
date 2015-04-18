@@ -4,11 +4,11 @@ project(":tioga-lib-thymeleaf") {
   dependencies {
     compile("org.thymeleaf:thymeleaf:2.1.4.RELEASE") {force = true}
     compile("org.thymeleaf.extras:thymeleaf-extras-java8time:2.1.0.RELEASE")
-    compile("org.tiogasolutions.dev:tioga-dev-common:4.1.4")
+    compile("org.tiogasolutions.dev:tioga-dev-common:4.+")
 
     testCompile ("org.testng:testng:6.8.21")
   }
 
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
+  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }
 

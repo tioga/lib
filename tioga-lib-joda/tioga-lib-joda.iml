@@ -20,13 +20,13 @@
     <orderEntry type="library" exported="" name="Gradle: org.joda:joda-money:0.10.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.ws.rs:javax.ws.rs-api:2.0.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: joda-time:joda-time:2.2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-joda:2.5.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.5.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.5.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.5.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.testng:testng:6.8.21" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-common:4.1.4" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.tiogasolutions.dev:tioga-dev-jackson:4.1.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.tiogasolutions.dev:tioga-dev-domain:4.1.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-joda:2.5.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.5.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.5.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.5.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.tiogasolutions.dev:tioga-dev-jackson:4.1.8" level="project" />
   </component>
 </module>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.amazonaws:aws-java-sdk-redshift:1.9.30">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-java-sdk-redshift/1.9.30/239edaa832a3c92f1817508ded0bd6a1e95f8efd/aws-java-sdk-redshift-1.9.30.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-java-sdk-redshift/1.9.30/eeec40cd173275408f00dd5320008e2411a84636/aws-java-sdk-redshift-1.9.30-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -17,7 +17,7 @@ project(':tioga-lib-spring-amazon') {
   version = "1.0.5"
 
   dependencies {
-    compile("org.tiogasolutions.dev:tioga-dev-common:4.1.4")
+    compile("org.tiogasolutions.dev:tioga-dev-common:4.+")
     compile("com.amazonaws:aws-java-sdk:1.9.30")
     compile("org.springframework:spring-beans:4.1.6.RELEASE")
 
@@ -26,5 +26,5 @@ project(':tioga-lib-spring-amazon') {
     testCompile ("org.testng:testng:6.8.21")
   }
 
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
+  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }

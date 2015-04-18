@@ -18,18 +18,18 @@ project(':tioga-lib-couchace') {
 
   dependencies {
 
-    compile("org.tiogasolutions.dev:tioga-dev-domain:4.1.2")
-    compile("org.tiogasolutions.dev:tioga-dev-jackson:4.1.8");
+    compile("org.tiogasolutions.dev:tioga-dev-domain:4.+")
+    compile("org.tiogasolutions.dev:tioga-dev-jackson:4.+");
 
-    compile("org.tiogasolutions.couchace:tioga-couchace-annotations:1.4.3")
-    compile("org.tiogasolutions.couchace:tioga-couchace-core:1.4.3")
-    compile("org.tiogasolutions.couchace:tioga-couchace-jersey:1.4.3")
-    compile("org.tiogasolutions.couchace:tioga-couchace-jackson:1.4.3")
+    compile("org.tiogasolutions.couchace:tioga-couchace-annotations:1.+")
+    compile("org.tiogasolutions.couchace:tioga-couchace-core:1.+")
+    compile("org.tiogasolutions.couchace:tioga-couchace-jersey:1.+")
+    compile("org.tiogasolutions.couchace:tioga-couchace-jackson:1.+")
 
-    compile("commons-logging:commons-logging:1.2")
+    compile("commons-logging:commons-logging:1.2") {force = true}
 
     testCompile ("org.testng:testng:6.8.21")
   }
 
-  apply(from: "https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle?" + System.currentTimeMillis())
+  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }
