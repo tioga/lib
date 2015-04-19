@@ -18,9 +18,9 @@ project(':tioga-lib-jaxrs-jackson') {
 
   dependencies {
     compile(project(":tioga-lib-jaxrs"))
-    compile("org.tiogasolutions.dev:tioga-dev-jackson:4.+")
+    compile("org.tiogasolutions.dev:tioga-dev-jackson:+")
 
-    testCompile("org.tiogasolutions.dev:tioga-dev-testing:4.+")
+    testCompile("org.tiogasolutions.dev:tioga-dev-testing:+")
     testCompile("org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.17")
     testCompile ("org.testng:testng:6.8.21")
   }

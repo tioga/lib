@@ -18,7 +18,7 @@ project(':tioga-lib-jaxrs') {
 
   dependencies {
     compile ("javax.ws.rs:javax.ws.rs-api:2.0.1")
-    compile ("org.tiogasolutions.dev:tioga-dev-common:4.+")
+    compile ("org.tiogasolutions.dev:tioga-dev-common:+")
 
     testCompile ("org.testng:testng:6.8.21")
   }

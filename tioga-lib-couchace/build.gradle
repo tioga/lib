@@ -18,13 +18,13 @@ project(':tioga-lib-couchace') {
 
   dependencies {
 
-    compile("org.tiogasolutions.dev:tioga-dev-domain:4.+")
-    compile("org.tiogasolutions.dev:tioga-dev-jackson:4.+");
+    compile("org.tiogasolutions.dev:tioga-dev-domain:+")
+    compile("org.tiogasolutions.dev:tioga-dev-jackson:+");
 
-    compile("org.tiogasolutions.couchace:tioga-couchace-annotations:1.+")
-    compile("org.tiogasolutions.couchace:tioga-couchace-core:1.+")
-    compile("org.tiogasolutions.couchace:tioga-couchace-jersey:1.+")
-    compile("org.tiogasolutions.couchace:tioga-couchace-jackson:1.+")
+    compile("org.tiogasolutions.couchace:tioga-couchace-annotations:+")
+    compile("org.tiogasolutions.couchace:tioga-couchace-core:+")
+    compile("org.tiogasolutions.couchace:tioga-couchace-jersey:+")
+    compile("org.tiogasolutions.couchace:tioga-couchace-jackson:+")
 
     compile("commons-logging:commons-logging:1.2") {force = true}
 

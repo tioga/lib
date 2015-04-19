@@ -3,7 +3,7 @@ project(":tioga-lib-thymeleaf") {
 
   dependencies {
     compile("org.thymeleaf.extras:thymeleaf-extras-java8time:2.1.0.RELEASE")
-    compile("org.tiogasolutions.dev:tioga-dev-common:4.+")
+    compile("org.tiogasolutions.dev:tioga-dev-common:+")
     compile("org.slf4j:slf4j-api:1.7.12") {force = true}
 
     testCompile ("org.testng:testng:6.8.21")
