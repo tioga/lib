@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 project(':tioga-lib-jaxrs-jackson') {
-  version = "5.1.3"
+  version = "5.1.4"
 
   dependencies {
-    compile(project(":tioga-lib-jaxrs"))
+    compile("org.tiogasolutions.lib:tioga-lib-jaxrs:+")
     compile("org.tiogasolutions.dev:tioga-dev-jackson:+")
 
     testCompile("org.tiogasolutions.dev:tioga-dev-testing:+")
