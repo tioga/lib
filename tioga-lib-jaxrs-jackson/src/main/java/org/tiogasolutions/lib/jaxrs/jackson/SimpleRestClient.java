@@ -289,7 +289,7 @@ public class SimpleRestClient {
     HttpStatusCode statusCode = HttpStatusCode.findByCode(status);
     if (statusCode.isOk() == false) {
       String msg = String.format("Unexpected response: %s %s", status, statusCode.getReason());
-      throw new ApiException(statusCode, msg);
+      throw ApiException.fromCode(statusCode, msg);
     }
   }
 
