@@ -23,6 +23,7 @@ public class AppConfigStore extends DefaultCouchStore<AppConfig> {
   public AppConfigStore(CouchServer couchServer, String databaseName, String designName) {
     super(couchServer, AppConfig.class);
     this.designName = designName;
+    this.databaseName = databaseName;
   }
 
   @Override

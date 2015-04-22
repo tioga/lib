@@ -17,12 +17,12 @@ public class CouchPropertyPlaceholderConfigurer extends PropertyPlaceholderConfi
 
   private final Resource[] resources = new Resource[1];
 
-  public CouchPropertyPlaceholderConfigurer(CouchServer couchServer, String entityName) throws MalformedURLException, URISyntaxException {
-    this(couchServer, AppConfigStore.DEFAULT_DB_NAME, entityName);
-  }
-
   public CouchPropertyPlaceholderConfigurer(String entityName) throws MalformedURLException, URISyntaxException {
     this(new DefaultCouchServer(), AppConfigStore.DEFAULT_DB_NAME, entityName);
+  }
+
+  public CouchPropertyPlaceholderConfigurer(String databaseName, String entityName) throws MalformedURLException, URISyntaxException {
+    this(new DefaultCouchServer(), databaseName, entityName);
   }
 
   public CouchPropertyPlaceholderConfigurer(CouchServer couchServer, String databaseName, String entityName) throws MalformedURLException, URISyntaxException {
