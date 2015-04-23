@@ -161,7 +161,7 @@ public abstract class DefaultCouchStore<T>{
       throw new CouchException(response.getHttpStatus(), msg);
 
     } else if (response.isOk() == false) {
-      throw new CouchException(response.getHttpStatus());
+      throw new CouchException(response.getHttpStatus(), response.getErrorReason());
     }
 
     return response;
