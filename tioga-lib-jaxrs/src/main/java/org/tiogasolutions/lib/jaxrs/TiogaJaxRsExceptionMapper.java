@@ -54,7 +54,7 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
       msg += uriInfo.getRequestUri();
     }
 
-    if (400 == status) {
+    if (status >= 400 || status < 500) {
       logInfo(msg, throwable);
     } else {
       logError(msg, throwable);
