@@ -23,15 +23,15 @@ public class SimpleRestClient {
   private final String password;
 
   public SimpleRestClient(JsonTranslator translator, String apiUrl) {
-    this(true, translator, parseUrl(apiUrl), parseUserFromUrl(apiUrl), parsePassFromUrl(apiUrl));
+    this(false, translator, parseUrl(apiUrl), parseUserFromUrl(apiUrl), parsePassFromUrl(apiUrl));
   }
 
   public SimpleRestClient(JsonTranslator translator, String apiUrl, String authentication) {
-    this(true, translator, parseUrl(apiUrl), parseUserFromAuth(authentication), parsePassFromAuth(authentication));
+    this(false, translator, parseUrl(apiUrl), parseUserFromAuth(authentication), parsePassFromAuth(authentication));
   }
 
   public SimpleRestClient(JsonTranslator translator, String apiUrl, String username, String password) {
-    this(true, translator, parseUrl(apiUrl), username, password);
+    this(false, translator, parseUrl(apiUrl), username, password);
   }
 
   public SimpleRestClient(boolean notFoundToNull, JsonTranslator translator, String apiUrl, String username, String password) {
@@ -287,7 +287,7 @@ public class SimpleRestClient {
 
   protected void assertResponse(int status) {
     HttpStatusCode statusCode = HttpStatusCode.findByCode(status);
-    if (statusCode.isOk() == false) {
+    if (statusCode.isSuccess()) {
       String msg = String.format("Unexpected response: %s %s", status, statusCode.getReason());
       throw ApiException.fromCode(statusCode, msg);
     }
