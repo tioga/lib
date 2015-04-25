@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 project(':tioga-lib-couchace') {
-  version = "5.0.11"
+  version = "5.0.12"
 
   dependencies {
 

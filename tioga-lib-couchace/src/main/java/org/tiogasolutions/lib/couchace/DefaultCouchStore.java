@@ -137,6 +137,10 @@ public abstract class DefaultCouchStore<T>{
     return getEntities(viewName, (Object[])keyValues);
   }
 
+  protected List<T> getEntities(String viewName, Long... keyValues) {
+    return getEntities(viewName, (Object[])keyValues);
+  }
+
   protected List<T> getEntities(String viewName, Object[] keyValues) {
     return getEntities(viewName, Arrays.asList(keyValues));
   }
