@@ -34,9 +34,7 @@
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-context:4.1.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-web:4.1.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-expression:4.1.6.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.lib:tioga-lib-jaxrs-jackson:5.1.5" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-jackson:4.1.10" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.lib:tioga-lib-jaxrs:4.1.6" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-common:5.0.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-domain:4.1.6" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.5.1" level="project" />
@@ -44,5 +42,7 @@
     <orderEntry type="library" exported="" name="Gradle: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.5.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.5.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.lib:tioga-lib-jaxrs-jackson:5.1.6" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.lib:tioga-lib-jaxrs:4.1.7" level="project" />
   </component>
 </module>
