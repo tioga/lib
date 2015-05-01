@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 project(':tioga-lib-spring-security') {
-  version = "4.1.13"
+  version = "4.1.14"
 
   dependencies {
     compile("org.tiogasolutions.lib:tioga-lib-jaxrs-jackson:+")
@@ -22,19 +22,19 @@ project(':tioga-lib-spring-security') {
     compile("commons-logging:commons-logging:1.2") {force = true}
     compile("log4j:log4j:1.2.17")
 
-    def version = "3.2.6.RELEASE"
-    compile ("org.springframework.security:spring-security-config:$version")
-    compile ("org.springframework.security:spring-security-taglibs:$version")
+    def springVersion = "3.2.6.RELEASE"
+    compile ("org.springframework.security:spring-security-config:$springVersion")
+    compile ("org.springframework.security:spring-security-taglibs:$springVersion")
 
-    version = "4.1.6.RELEASE"
-    compile("org.springframework:spring-tx:$version") {force = true}
-    compile("org.springframework:spring-jdbc:$version") {force = true}
-    compile("org.springframework:spring-aop:$version") {force = true}
-    compile("org.springframework:spring-beans:$version") {force = true}
-    compile("org.springframework:spring-core:$version") {force = true}
-    compile("org.springframework:spring-context:$version") {force = true}
-    compile("org.springframework:spring-web:$version") {force = true}
-    compile("org.springframework:spring-expression:$version") {force = true}
+    springVersion = "4.1.6.RELEASE"
+    compile("org.springframework:spring-tx:$springVersion") {force = true}
+    compile("org.springframework:spring-jdbc:$springVersion") {force = true}
+    compile("org.springframework:spring-aop:$springVersion") {force = true}
+    compile("org.springframework:spring-beans:$springVersion") {force = true}
+    compile("org.springframework:spring-core:$springVersion") {force = true}
+    compile("org.springframework:spring-context:$springVersion") {force = true}
+    compile("org.springframework:spring-web:$springVersion") {force = true}
+    compile("org.springframework:spring-expression:$springVersion") {force = true}
 
     testCompile ("org.testng:testng:6.8.21")
   }
