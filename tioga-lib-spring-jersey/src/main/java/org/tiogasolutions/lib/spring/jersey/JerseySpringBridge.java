@@ -32,14 +32,33 @@ public class JerseySpringBridge extends AbstractBinder {
 
     String[] beanNames = beanFactory.getBeanDefinitionNames();
     for (String beanName : beanNames) {
-      Object bean = beanFactory.getBean(beanName);
 
-      bindFactory(new Factory<Object>() {
-        @Override public void dispose(Object instance) {}
-        @Override public Object provide() {
-          return bean;
-        }
-      }).to(bean.getClass());
+      Object bean = beanFactory.getBean(beanName);
+      List<Class<?>> types = getAllTypes(bean);
+
+      for (Class<?> type : types) {
+        bindFactory(new Factory<Object>() {
+            @Override public void dispose(Object instance) {}
+            @Override public Object provide() {
+              return bean;
+            }
+        }).to(type);
+      }
     }
+  }
+
+  public List<Class<?>> getAllTypes(Object bean) {
+
+    List<Class<?>> types = new ArrayList<>();
+
+    Class<?> type = bean.getClass();
+    Collections.addAll(types, bean.getClass().getInterfaces());
+
+    while (type != null) {
+      types.add(type);
+      type = type.getSuperclass();
+    }
+
+    return types;
   }
 }
