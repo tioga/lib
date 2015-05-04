@@ -18,19 +18,31 @@ public class CouchPropertyPlaceholderConfigurer extends PropertyPlaceholderConfi
   private final Resource[] resources = new Resource[1];
 
   public CouchPropertyPlaceholderConfigurer(String entityName) throws MalformedURLException, URISyntaxException {
-    this(new DefaultCouchServer(), AppConfigStore.DEFAULT_DB_NAME, entityName);
+    this(new DefaultCouchServer(), AppConfigStore.DEFAULT_DB_NAME, entityName, new Properties());
+  }
+
+  public CouchPropertyPlaceholderConfigurer(String entityName, Properties defaultProperties) throws MalformedURLException, URISyntaxException {
+    this(new DefaultCouchServer(), AppConfigStore.DEFAULT_DB_NAME, entityName, defaultProperties);
   }
 
   public CouchPropertyPlaceholderConfigurer(String databaseName, String entityName) throws MalformedURLException, URISyntaxException {
-    this(new DefaultCouchServer(), databaseName, entityName);
+    this(new DefaultCouchServer(), databaseName, entityName, new Properties());
+  }
+
+  public CouchPropertyPlaceholderConfigurer(String databaseName, String entityName, Properties defaultProperties) throws MalformedURLException, URISyntaxException {
+    this(new DefaultCouchServer(), databaseName, entityName, defaultProperties);
   }
 
   public CouchPropertyPlaceholderConfigurer(CouchServer couchServer, String databaseName, String entityName) throws MalformedURLException, URISyntaxException {
+    this(couchServer, databaseName, entityName, new Properties());
+  }
+
+  public CouchPropertyPlaceholderConfigurer(CouchServer couchServer, String databaseName, String entityName, Properties defaultProperties) throws MalformedURLException, URISyntaxException {
     ExceptionUtils.assertNotNull(couchServer, "couchServer");
     ExceptionUtils.assertNotNull(entityName, "entityName");
 
     AppConfigStore store = new AppConfigStore(couchServer, databaseName);
-    CouchResourceLoader loader = new CouchResourceLoader(store);
+    CouchResourceLoader loader = new CouchResourceLoader(store, defaultProperties);
     resources[0] = loader.getResource(entityName);
   }
 
