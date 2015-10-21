@@ -11,7 +11,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class FreeBirdRestServer {
 
   // Base URI the Grizzly HTTP server will listen on
-  public static final int testPort = 8081;
+  public static final int testPort = 8099;
   public static final URI BASE_URI = URI.create("http://localhost:"+testPort+"/test-server/");
   public static final URI API_URI  = URI.create("http://localhost:"+testPort+"/test-server/api");
 
