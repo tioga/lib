@@ -24,6 +24,23 @@
             <option value="$PROJECT_DIR$/tioga-lib-thymeleaf" />
           </set>
         </option>
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/tioga-lib-couchace" />
+            <option value="$PROJECT_DIR$/tioga-lib-jaxrs" />
+            <option value="$PROJECT_DIR$/tioga-lib-jaxrs-jackson" />
+            <option value="$PROJECT_DIR$/tioga-lib-joda" />
+            <option value="$PROJECT_DIR$/tioga-lib-selenium" />
+            <option value="$PROJECT_DIR$/tioga-lib-servlet" />
+            <option value="$PROJECT_DIR$/tioga-lib-spring-amazon" />
+            <option value="$PROJECT_DIR$/tioga-lib-spring-couchace" />
+            <option value="$PROJECT_DIR$/tioga-lib-spring-jaxrs" />
+            <option value="$PROJECT_DIR$/tioga-lib-spring-jersey" />
+            <option value="$PROJECT_DIR$/tioga-lib-spring-security" />
+            <option value="$PROJECT_DIR$/tioga-lib-thymeleaf" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>
