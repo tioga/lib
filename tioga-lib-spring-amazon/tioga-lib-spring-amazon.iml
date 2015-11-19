@@ -16,7 +16,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.apache.httpcomponents:httpclient:4.3.4" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: joda-time:joda-time:2.7" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.apache.httpcomponents:httpcore:4.3.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.beust:jcommander:1.27" level="project" />
@@ -76,5 +75,16 @@
     <orderEntry type="library" exported="" name="Gradle: com.amazonaws:aws-java-sdk-machinelearning:1.9.31" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.amazonaws:aws-java-sdk-core:1.9.31" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-common:5.0.1" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: joda-time:joda-time:2.9.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.9.1/c261495d1e01df849cdb3cbc941564018f0d3539/joda-time-2.9.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.9.1/5c411f8667d0064a7fb780c0948ee2b829bb2ebe/joda-time-2.9.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

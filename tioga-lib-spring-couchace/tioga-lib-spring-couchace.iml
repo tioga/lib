@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id=":tioga-lib-spring-couchace" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="org.tiogasolutions.lib" external.system.module.version="1.0.15" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":tioga-lib-spring-couchace" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="org.tiogasolutions.lib" external.system.module.version="1.0.16" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/build/classes/main" />
     <output-test url="file://$MODULE_DIR$/build/classes/test" />
@@ -14,7 +14,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="tioga-lib-couchace" exported="" />
     <orderEntry type="library" exported="" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.beust:jcommander:1.27" level="project" />
@@ -22,14 +21,9 @@
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-beans:4.1.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-core:4.1.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-jackson:4.1.10" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.couchace:tioga-couchace-core:1.4.3" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.couchace:tioga-couchace-jackson:1.4.3" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.couchace:tioga-couchace-annotations:1.4.3" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.couchace:tioga-couchace-jersey:1.4.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-domain:4.1.6" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.dev:tioga-dev-common:5.0.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.5.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.slf4j:slf4j-api:1.7.12" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.glassfish.jersey.core:jersey-common:2.17" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.glassfish.jersey.core:jersey-server:2.17" level="project" />
@@ -52,5 +46,60 @@
     <orderEntry type="library" exported="" name="Gradle: org.javassist:javassist:3.18.1-GA" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.tiogasolutions.lib:tioga-lib-couchace:5.0.12" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.tiogasolutions.couchace:tioga-couchace-core:1.5.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.couchace/tioga-couchace-core/1.5.0/6b09356ea88eb2261ee1a433fafc694f2b5fe615/tioga-couchace-core-1.5.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.couchace/tioga-couchace-core/1.5.0/c7cf1e91fee282acd5a12defc9fc5b93c48f1bc8/tioga-couchace-core-1.5.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.tiogasolutions.couchace:tioga-couchace-jackson:1.5.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.couchace/tioga-couchace-jackson/1.5.0/1c397ac7ab53805b85e4c08e98206c99b0ee3b13/tioga-couchace-jackson-1.5.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.couchace/tioga-couchace-jackson/1.5.0/87eed5c00379cb5fd5c18ed52b5fcf7ce2392208/tioga-couchace-jackson-1.5.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.tiogasolutions.couchace:tioga-couchace-annotations:1.5.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.couchace/tioga-couchace-annotations/1.5.0/c747deeb1902f5db678ed824558120273fd63aa7/tioga-couchace-annotations-1.5.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.couchace/tioga-couchace-annotations/1.5.0/7405999b9086e78db4969dfe5f7f98e9a9788a9f/tioga-couchace-annotations-1.5.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.tiogasolutions.couchace:tioga-couchace-jersey:1.5.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.couchace/tioga-couchace-jersey/1.5.0/4e5895cb8af0f5011a48eb7661d52c7ce0dcc542/tioga-couchace-jersey-1.5.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.couchace/tioga-couchace-jersey/1.5.0/d3c30a4bbe71c98d73dde74f97d08193d3efad3/tioga-couchace-jersey-1.5.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.slf4j:slf4j-api:1.7.7">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.7/2b8019b6249bb05d81d3a3094e468753e2b21311/slf4j-api-1.7.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.7/acd62e31cc314266e73eebed0b6dd7ea974a0ed/slf4j-api-1.7.7-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

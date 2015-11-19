@@ -11,8 +11,6 @@
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-servlet/tioga-lib-servlet.iml" filepath="$PROJECT_DIR$/tioga-lib-servlet/tioga-lib-servlet.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-amazon/tioga-lib-spring-amazon.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-amazon/tioga-lib-spring-amazon.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-couchace/tioga-lib-spring-couchace.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-couchace/tioga-lib-spring-couchace.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-jaxrs/tioga-lib-spring-jaxrs.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-jaxrs/tioga-lib-spring-jaxrs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-jersey/tioga-lib-spring-jersey.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-jersey/tioga-lib-spring-jersey.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-security/tioga-lib-spring-security.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-security/tioga-lib-spring-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-thymeleaf/tioga-lib-thymeleaf.iml" filepath="$PROJECT_DIR$/tioga-lib-thymeleaf/tioga-lib-thymeleaf.iml" />
     </modules>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 project(':tioga-lib-jaxrs') {
-  version = "4.1.7"
+  version = "4.1.8"
 
   dependencies {
     compile ("javax.ws.rs:javax.ws.rs-api:2.0.1")

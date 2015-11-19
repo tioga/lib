@@ -16,7 +16,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.validation:validation-api:1.1.0.Final" level="project" />
-    <orderEntry type="module" module-name="tioga-lib-jaxrs" exported="" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.glassfish.grizzly:grizzly-http-server:2.3.16" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.glassfish.grizzly:grizzly-http:2.3.16" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: javax.annotation:javax.annotation-api:1.2" level="project" />
