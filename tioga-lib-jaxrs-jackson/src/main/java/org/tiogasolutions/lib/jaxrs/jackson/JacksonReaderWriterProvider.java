@@ -46,7 +46,7 @@ public abstract class JacksonReaderWriterProvider<T> implements MessageBodyReade
 
 
   public JacksonReaderWriterProvider(ObjectMapper objectMapper, MediaType mediaType) {
-    this(objectMapper, Arrays.asList(mediaType));
+    this(objectMapper, Collections.singletonList(mediaType));
   }
 
   public JacksonReaderWriterProvider(ObjectMapper objectMapper, Collection<MediaType> mediaTypes) {
