@@ -9,6 +9,7 @@ import org.tiogasolutions.dev.common.*;
 import org.tiogasolutions.dev.common.exceptions.ApiException;
 import org.tiogasolutions.dev.common.json.JsonTranslator;
 import org.tiogasolutions.dev.common.net.HttpStatusCode;
+import org.tiogasolutions.dev.domain.query.QueryResult;
 
 public class SimpleRestClient {
 
@@ -176,6 +177,10 @@ public class SimpleRestClient {
   }
 
 
+  @SuppressWarnings("unchecked")
+  public <T> QueryResult<T> getQueryResult(Class<T> returnType, String subUrl, String... queryStrings) {
+    return get(QueryResult.class, subUrl, queryStrings);
+  }
 
   public <T> T get(Class<T> returnType, String subUrl, String... queryStrings) {
     Map<String,Object> queryMap = new HashMap<>();
