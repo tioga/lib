@@ -10,7 +10,7 @@ public class TiogaExceptionInfo {
   private final int status;
   private final String message;
 
-  private final List<String> causes;
+  private final List<String> causes = new LinkedList<>();
 
   public TiogaExceptionInfo(int status, Throwable ex) {
     this.status = status;
@@ -18,15 +18,12 @@ public class TiogaExceptionInfo {
 
     List<? extends Throwable> allCauses = ExceptionUtils.getRootCauses(ex);
 
-    List<String> causes = new LinkedList<>();
     for (Throwable cause : allCauses) {
       String msg = ExceptionUtils.getMessage(cause);
       causes.add(msg);
     }
 
     causes.remove(0); // Remove the original exception.
-
-    this.causes = (causes.isEmpty() ? null : causes);
   }
 
   public int getStatus() {
