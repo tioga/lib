@@ -8,6 +8,7 @@ import javax.ws.rs.ext.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tiogasolutions.dev.common.exceptions.*;
+import org.tiogasolutions.dev.common.net.HttpStatusCode;
 
 public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throwable> {
 
@@ -16,37 +17,55 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
   @Context
   protected UriInfo uriInfo;
 
-  private final boolean renderAsJson;
-  private final Map<String,Integer> exceptionMap = new HashMap<>();
+  private final Map<Class<?>,Integer> exceptionMap = new HashMap<>();
 
-  public TiogaJaxRsExceptionMapper(boolean renderAsJson) {
-    this.renderAsJson = renderAsJson;
+  public TiogaJaxRsExceptionMapper() {
     log.info("Created.");
+  }
+
+  public void registerException(HttpStatusCode httpStatus, Class<? extends Throwable>...types) {
+    registerException(httpStatus.getCode(), types);
+  }
+
+  public void registerException(int httpStatus, Class<? extends Throwable>...types) {
+    for (Class<? extends Throwable> type : types) {
+      exceptionMap.put(type, httpStatus);
+    }
   }
 
   @Override
   public Response toResponse(Throwable ex) {
 
-    String exceptionName = ex.getClass().getName();
-    if (exceptionMap.containsKey(exceptionName)) {
-      int status = exceptionMap.get(exceptionName);
-      return createResponse(status, ex);
+    if (exceptionMap.containsKey(ex.getClass())) {
+      int status = exceptionMap.get(ex.getClass());
+      return toResponse(status, ex);
     }
 
     if (ex instanceof ApiException) {
-      ApiException apiEx = (ApiException)ex;
+      ApiException apiEx = (ApiException) ex;
       int status = apiEx.getHttpStatusCode().getCode();
-      return createResponse(status, ex);
+      return toResponse(status, ex);
+    }
 
-    } else if (ex instanceof WebApplicationException) {
+    if (ex instanceof WebApplicationException) {
       WebApplicationException wae = (WebApplicationException)ex;
       if (wae.getResponse() != null) {
         int status = wae.getResponse().getStatus();
-        return createResponse(status, ex);
+        return toResponse(status, ex);
       }
     }
 
-    return createResponse(500, ex);
+    return toResponse(500, ex);
+  }
+
+  protected Response toResponse(int status, Throwable ex) {
+    logException(ex, status);
+    return createResponse(status, ex);
+  }
+
+  protected Response createResponse(int status, Throwable ex) {
+    TiogaExceptionInfo exceptionInfo = new TiogaExceptionInfo(status, ex);
+    return Response.status(status).entity(exceptionInfo).build();
   }
 
   protected void logException(Throwable throwable, int status) {
@@ -71,24 +90,4 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
   protected void log5xxException(String msg, Throwable throwable) {
     log.error(msg, throwable);
   }
-
-  protected Response createResponse(int status, Throwable ex) {
-
-    logException(ex, status);
-    String message = ExceptionUtils.getMessage(ex);
-
-    if (renderAsJson) {
-      message = message.replace("\\", "\\\\");
-      message = message.replace("\"", "\\\"");
-      String json = String.format(JSON_TEMPLATE, status, message);
-      return Response.status(status).entity(json).type(MediaType.APPLICATION_JSON).build();
-    } else {
-      return Response.status(status).entity(message).type(MediaType.TEXT_PLAIN).build();
-    }
-  }
-
-  private static final String JSON_TEMPLATE = "{\n" +
-    "  \"status\" : \"%s\",\n" +
-    "  \"message\" : \"%s\"\n" +
-    "}";
 }
