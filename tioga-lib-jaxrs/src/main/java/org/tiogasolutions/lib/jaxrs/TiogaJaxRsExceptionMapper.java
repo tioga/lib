@@ -4,22 +4,24 @@ import java.util.*;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.*;
 import javax.ws.rs.ext.*;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tiogasolutions.dev.common.exceptions.*;
 
 public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throwable> {
 
+  private static final Logger log = LoggerFactory.getLogger(TiogaJaxRsExceptionMapper.class);
+
   @Context
   protected UriInfo uriInfo;
-
-  protected abstract void logInfo(String msg, Throwable ex);
-  protected abstract void logError(String msg, Throwable ex);
 
   private final boolean renderAsJson;
   private final Map<String,Integer> exceptionMap = new HashMap<>();
 
   public TiogaJaxRsExceptionMapper(boolean renderAsJson) {
     this.renderAsJson = renderAsJson;
-    logInfo("Created exception mapper", null);
+    log.info("Created.");
   }
 
   @Override
@@ -55,10 +57,19 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
     }
 
     if (status >= 400 &&  status < 500) {
-      logInfo(msg, throwable);
+      log4xxException(msg, throwable);
     } else {
-      logError(msg, throwable);
+      log5xxException(msg, throwable);
     }
+  }
+
+  @SuppressWarnings("UnusedParameters")
+  protected void log4xxException(String msg, Throwable throwable) {
+    log.info(msg);
+  }
+
+  protected void log5xxException(String msg, Throwable throwable) {
+    log.error(msg, throwable);
   }
 
   protected Response createResponse(int status, Throwable ex) {
