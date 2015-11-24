@@ -23,12 +23,12 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
     log.info("Created.");
   }
 
-  public void registerException(HttpStatusCode httpStatus, Class<? extends Throwable>...types) {
+  public void registerException(HttpStatusCode httpStatus, Class<?>...types) {
     registerException(httpStatus.getCode(), types);
   }
 
-  public void registerException(int httpStatus, Class<? extends Throwable>...types) {
-    for (Class<? extends Throwable> type : types) {
+  public void registerException(int httpStatus, Class<?>...types) {
+    for (Class<?> type : types) {
       exceptionMap.put(type, httpStatus);
     }
   }
