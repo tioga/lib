@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/lib.iml" filepath="$PROJECT_DIR$/lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-couchace/tioga-lib-couchace.iml" filepath="$PROJECT_DIR$/tioga-lib-couchace/tioga-lib-couchace.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-jaxrs/tioga-lib-jaxrs.iml" filepath="$PROJECT_DIR$/tioga-lib-jaxrs/tioga-lib-jaxrs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-jaxrs-jackson/tioga-lib-jaxrs-jackson.iml" filepath="$PROJECT_DIR$/tioga-lib-jaxrs-jackson/tioga-lib-jaxrs-jackson.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-joda/tioga-lib-joda.iml" filepath="$PROJECT_DIR$/tioga-lib-joda/tioga-lib-joda.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-selenium/tioga-lib-selenium.iml" filepath="$PROJECT_DIR$/tioga-lib-selenium/tioga-lib-selenium.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-servlet/tioga-lib-servlet.iml" filepath="$PROJECT_DIR$/tioga-lib-servlet/tioga-lib-servlet.iml" />

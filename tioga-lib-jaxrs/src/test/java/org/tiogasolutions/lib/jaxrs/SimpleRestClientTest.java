@@ -1,4 +1,4 @@
-package org.tiogasolutions.lib.jaxrs.jackson;
+package org.tiogasolutions.lib.jaxrs;
 
 import java.io.InputStream;
 import java.time.LocalDate;
@@ -11,7 +11,6 @@ import org.tiogasolutions.dev.common.net.HttpStatusCode;
 import org.tiogasolutions.dev.domain.locality.LatLng;
 import org.tiogasolutions.dev.jackson.TiogaJacksonTranslator;
 import org.tiogasolutions.dev.testing.domain.FreeBird;
-import org.tiogasolutions.lib.jaxrs.jackson.server.FreeBirdRestServer;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.testng.Assert;
 import org.testng.annotations.*;

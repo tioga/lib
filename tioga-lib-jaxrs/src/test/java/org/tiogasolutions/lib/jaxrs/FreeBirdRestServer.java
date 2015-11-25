@@ -1,9 +1,7 @@
-package org.tiogasolutions.lib.jaxrs.jackson.server;
+package org.tiogasolutions.lib.jaxrs;
 
 import java.io.IOException;
 import java.net.URI;
-import org.tiogasolutions.lib.jaxrs.JavaTimeParamConverterProvider;
-import org.tiogasolutions.lib.jaxrs.jackson.TiogaReaderWriterProvider;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
