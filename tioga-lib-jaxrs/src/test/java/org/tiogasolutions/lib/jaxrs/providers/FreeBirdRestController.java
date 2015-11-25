@@ -1,4 +1,4 @@
-package org.tiogasolutions.lib.jaxrs;
+package org.tiogasolutions.lib.jaxrs.providers;
 
 import java.io.*;
 import java.time.LocalDate;

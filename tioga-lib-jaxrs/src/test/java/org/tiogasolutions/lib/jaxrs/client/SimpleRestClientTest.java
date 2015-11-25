@@ -1,4 +1,4 @@
-package org.tiogasolutions.lib.jaxrs;
+package org.tiogasolutions.lib.jaxrs.client;
 
 import java.io.InputStream;
 import java.time.LocalDate;
@@ -14,6 +14,7 @@ import org.tiogasolutions.dev.testing.domain.FreeBird;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import org.tiogasolutions.lib.jaxrs.providers.FreeBirdRestServer;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;

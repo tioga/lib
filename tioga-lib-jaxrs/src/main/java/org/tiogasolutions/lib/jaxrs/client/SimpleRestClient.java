@@ -1,4 +1,4 @@
-package org.tiogasolutions.lib.jaxrs;
+package org.tiogasolutions.lib.jaxrs.client;
 
 import java.io.*;
 import java.util.*;

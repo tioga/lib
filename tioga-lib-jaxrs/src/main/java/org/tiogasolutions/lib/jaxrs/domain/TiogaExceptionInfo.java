@@ -1,4 +1,4 @@
-package org.tiogasolutions.lib.jaxrs;
+package org.tiogasolutions.lib.jaxrs.domain;
 
 import org.tiogasolutions.dev.common.exceptions.ExceptionUtils;
 

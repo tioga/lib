@@ -1,4 +1,6 @@
-package org.tiogasolutions.lib.jaxrs;
+package org.tiogasolutions.lib.jaxrs.providers;
+
+import org.tiogasolutions.lib.jaxrs.providers.TiogaReaderWriterProvider;
 
 import javax.ws.rs.ext.Provider;
 

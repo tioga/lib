@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tiogasolutions.lib.jaxrs;
+package org.tiogasolutions.lib.jaxrs.providers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.tiogasolutions.dev.common.IoUtils;

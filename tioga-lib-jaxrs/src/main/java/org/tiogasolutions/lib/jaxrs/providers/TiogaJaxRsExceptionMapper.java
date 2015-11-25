@@ -1,4 +1,4 @@
-package org.tiogasolutions.lib.jaxrs;
+package org.tiogasolutions.lib.jaxrs.providers;
 
 import java.util.*;
 import javax.ws.rs.WebApplicationException;
@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tiogasolutions.dev.common.exceptions.*;
 import org.tiogasolutions.dev.common.net.HttpStatusCode;
+import org.tiogasolutions.lib.jaxrs.domain.TiogaExceptionInfo;
 
 public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throwable> {
 
