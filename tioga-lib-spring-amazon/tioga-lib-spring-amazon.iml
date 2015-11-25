@@ -75,13 +75,13 @@
     <orderEntry type="library" exported="" name="Gradle: com.amazonaws:aws-java-sdk-machinelearning:1.9.31" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.amazonaws:aws-java-sdk-core:1.9.31" level="project" />
     <orderEntry type="module-library">
-      <library name="Gradle: org.tiogasolutions.dev:tioga-dev-common:5.1.0">
+      <library name="Gradle: org.tiogasolutions.dev:tioga-dev-common:5.1.1">
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.dev/tioga-dev-common/5.1.0/76af939fe82b53ce94946337c1cc2bcf68b48051/tioga-dev-common-5.1.0.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/tiogasolutions/dev/tioga-dev-common/5.1.1/tioga-dev-common-5.1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.dev/tioga-dev-common/5.1.0/f3da0e53308572b4885e4a59693b95d34e30a516/tioga-dev-common-5.1.0-sources.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/tiogasolutions/dev/tioga-dev-common/5.1.1/tioga-dev-common-5.1.1-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
