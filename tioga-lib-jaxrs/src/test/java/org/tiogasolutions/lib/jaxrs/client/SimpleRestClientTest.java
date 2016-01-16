@@ -357,7 +357,7 @@ public class SimpleRestClientTest {
 
     SimpleRestClient client = new SimpleRestClient(null, null, null, null);
 
-    client.assertResponse(200);
+    client.assertResponse(200, null);
 
     validateResponseException(client, 400, "Unexpected response: 400 Bad Request");
     validateResponseException(client, 404, "Unexpected response: 404 Not Found");
@@ -367,9 +367,16 @@ public class SimpleRestClientTest {
 
   private void validateResponseException(SimpleRestClient client, int code, String message) {
     try {
-      client.assertResponse(code);
-    } catch (Exception e) {
+      client.assertResponse(code, "some content");
+
+    } catch (ApiException e) {
       assertEquals(e.getMessage(), message);
+
+      FineMessage fineMessage = e.getMessageSet().findFirstWithTrait("length");
+      assertEquals(fineMessage.getTraitValue("length"), "12");
+
+      fineMessage = e.getMessageSet().findFirstWithTrait("content");
+      assertEquals(fineMessage.getTraitValue("content"), "some content");
     }
   }
 

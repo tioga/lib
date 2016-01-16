@@ -169,10 +169,17 @@ public class SimpleRestClient {
 
   public <T> T post(Class<T> returnType, String subUrl, Object entity) {
 
+    Response response;
     Invocation.Builder builder = builder(subUrl, Collections.<String,Object>emptyMap(), MediaType.APPLICATION_JSON);
-    String json = (entity == null) ? null : translator.toJson(entity);
 
-    Response response = builder.post(Entity.entity(json, MediaType.APPLICATION_JSON_TYPE));
+    if (entity instanceof Form) {
+      Form form = (Form)entity;
+      response = builder.post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE));
+
+    } else {
+      String json = (entity == null) ? null : translator.toJson(entity);
+      response = builder.post(Entity.entity(json, MediaType.APPLICATION_JSON_TYPE));
+    }
     return translateResponse(returnType, response);
   }
 
@@ -203,9 +210,11 @@ public class SimpleRestClient {
 
 
   private <T> T translateResponse(Class<T> returnType, Response response) {
+    // The return type will use the string content...
+    String content = response.readEntity(String.class);
 
     if (response.getStatus() == 404 && notFoundToNull) return null;
-    assertResponse(response.getStatus());
+    assertResponse(response.getStatus(), content);
 
     Object retValue;
 
@@ -217,8 +226,6 @@ public class SimpleRestClient {
       retValue = response;
 
     } else {
-      // The return type will use the string content...
-      String content = response.readEntity(String.class);
 
       if (String.class.equals(returnType)) {
         // A simple string - clean up after MS Windows
@@ -234,16 +241,17 @@ public class SimpleRestClient {
     return returnType.cast(retValue);
   }
 
-
   public byte[] getBytes(String subUrl, Map<String, Object> queryMap, String...acceptedResponseTypes) throws IOException {
     Invocation.Builder builder = builder(subUrl, queryMap, acceptedResponseTypes);
     Response response = builder.get(Response.class);
 
-    if (response.getStatus() == 404 && notFoundToNull) return null;
-    assertResponse(response.getStatus());
-
     InputStream in = (InputStream)response.getEntity();
-    return IoUtils.toBytes(in);
+    byte[] bytes = IoUtils.toBytes(in);
+
+    if (response.getStatus() == 404 && notFoundToNull) return null;
+    assertResponse(response.getStatus(), bytes.length, null);
+
+    return bytes;
   }
 
   public <T> List<T> getList(Class<T> returnType, String subUrl, String...queryStrings) {
@@ -256,10 +264,10 @@ public class SimpleRestClient {
     Invocation.Builder builder = builder(subUrl, queryMap, "application/json");
     Response response = builder.get();
 
-    if (response.getStatus() == 404 && notFoundToNull) return null;
-    assertResponse(response.getStatus());
-
     String content = response.readEntity(String.class);
+
+    if (response.getStatus() == 404 && notFoundToNull) return null;
+    assertResponse(response.getStatus(), content);
 
     // Create a new list of the correct type.
     List<T> list = new ArrayList<>();
@@ -290,11 +298,20 @@ public class SimpleRestClient {
     return password;
   }
 
-  protected void assertResponse(int status) {
+  protected void assertResponse(int status, String content) {
+    int length = (content == null) ? -1 : content.length();
+    assertResponse(status, length, content);
+  }
+
+  protected void assertResponse(int status, int length, String content) {
     HttpStatusCode statusCode = HttpStatusCode.findByCode(status);
     if (statusCode.isSuccess() == false) {
       String msg = String.format("Unexpected response: %s %s", status, statusCode.getReason());
-      throw ApiException.fromCode(statusCode, msg);
+      String[] traits = {
+          String.format("length:%s", length),
+          String.format("content:%s", content)
+      };
+      throw ApiException.fromCode(statusCode, msg, traits);
     }
   }
 
