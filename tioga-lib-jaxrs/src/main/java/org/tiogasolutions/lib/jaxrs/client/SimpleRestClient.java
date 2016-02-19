@@ -1,7 +1,10 @@
 package org.tiogasolutions.lib.jaxrs.client;
 
 import java.io.*;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.*;
+import javax.net.ssl.*;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.*;
 
@@ -14,26 +17,28 @@ import org.tiogasolutions.dev.domain.query.QueryResult;
 @SuppressWarnings("unused")
 public class SimpleRestClient {
 
-
-  public static final Map<String,Object> EMPTY_QUERY = Collections.emptyMap();
-
-  protected boolean notFoundToNull;
+  protected final String rootUrl;
   protected final JsonTranslator translator;
 
-  protected final String apiUrl;
+  protected Authorization authorization;
+  protected boolean notFoundToNull;
+  protected boolean ignoringCertificates;
 
-  protected final Authorization authorization;
-
-  public SimpleRestClient(JsonTranslator translator, Object apiUrl) {
-    this(translator, apiUrl, BasicAuthorization.fromUrl(apiUrl));
+  public SimpleRestClient(JsonTranslator translator, Object rootUrl) {
+    this(translator, rootUrl, BasicAuthorization.fromUrl(rootUrl));
   }
 
-  public SimpleRestClient(JsonTranslator translator, Object apiUrl, Authorization authorization) {
-    this(false, translator, BasicAuthorization.removeBasicAuth(apiUrl), authorization);
+  @Deprecated
+  public SimpleRestClient(JsonTranslator translator, Object rootUrl, String username, String password) {
+    this(false, translator, BasicAuthorization.removeBasicAuth(rootUrl), new BasicAuthorization(username, password));
   }
 
-  public SimpleRestClient(boolean notFoundToNull, JsonTranslator translator, Object apiUrl, Authorization authorization) {
-    this.apiUrl = (apiUrl == null) ? null : apiUrl.toString();
+  public SimpleRestClient(JsonTranslator translator, Object rootUrl, Authorization authorization) {
+    this(false, translator, BasicAuthorization.removeBasicAuth(rootUrl), authorization);
+  }
+
+  public SimpleRestClient(boolean notFoundToNull, JsonTranslator translator, Object rootUrl, Authorization authorization) {
+    this.rootUrl = (rootUrl == null) ? null : rootUrl.toString();
     this.authorization = authorization;
 
     this.translator = translator;
@@ -124,38 +129,35 @@ public class SimpleRestClient {
     return translateResponse(returnType, response);
   }
 
+  public <T> T translateResponse(Class<T> returnType, Response response) {
 
-
-  protected <T> T translateResponse(Class<T> returnType, Response response) {
-    // The return type will use the string content...
     String content = response.readEntity(String.class);
 
     if (response.getStatus() == 404 && notFoundToNull) return null;
     assertResponse(response.getStatus(), content);
 
-    Object retValue;
-
     if (returnType == null) {
-      // return object not expected
       return null;
 
     } else if (Response.class.equals(returnType)) {
-      retValue = response;
-
-    } else {
-
-      if (String.class.equals(returnType)) {
-        // A simple string - clean up after MS Windows
-        retValue = content.replaceAll("\r", "");
-
-      } else {
-        // A json object to be translated.
-        retValue = translator.fromJson(returnType, content);
-      }
+      returnType.cast(response);
     }
 
-    // noinspection unchecked
-    return returnType.cast(retValue);
+    return translateResponse(returnType, content);
+  }
+
+  public <T> T translateResponse(Class<T> returnType, String content) {
+
+    if (String.class.equals(returnType)) {
+      // A simple string - clean up after MS Windows
+      Object retValue = content.replaceAll("\r", "");
+      return returnType.cast(retValue);
+
+    } else {
+      // A json object to be translated.
+      Object retValue = translator.fromJson(returnType, content);
+      return returnType.cast(retValue);
+    }
   }
 
   public byte[] getBytes(String subUrl, Map<String, Object> queryMap, String...acceptedResponseTypes) throws IOException {
@@ -197,18 +199,28 @@ public class SimpleRestClient {
     return list;
   }
 
-
-
   public JsonTranslator getTranslator() {
     return translator;
   }
 
-  public String getApiUrl() {
-    return apiUrl;
+  public String getRootUrl() {
+    return rootUrl;
   }
 
   public Authorization getAuthorization() {
     return authorization;
+  }
+
+  public void setAuthorization(Authorization authorization) {
+    this.authorization = authorization;
+  }
+
+  public boolean isIgnoringCertificates() {
+    return ignoringCertificates;
+  }
+
+  public void setIgnoringCertificates(boolean ignoringCertificates) {
+    this.ignoringCertificates = ignoringCertificates;
   }
 
   protected void assertResponse(int status, String content) {
@@ -250,9 +262,30 @@ public class SimpleRestClient {
     return map;
   }
 
+  protected ClientBuilder createClient() {
+    ClientBuilder builder = ClientBuilder.newBuilder();
+    if (!ignoringCertificates) return builder;
+
+    try {
+      SSLContext sslcontext = SSLContext.getInstance("TLS");
+      sslcontext.init(null, new TrustManager[]{new X509TrustManager() {
+        public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
+        public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
+        public X509Certificate[] getAcceptedIssuers() { return new X509Certificate[0]; }
+
+      }}, new java.security.SecureRandom());
+      return builder.sslContext(sslcontext).hostnameVerifier((s1, s2) -> true);
+
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
   protected Invocation.Builder builder(String url, Map<String, Object> queryMap, String...acceptedResponseTypes) {
-    Client client = ClientBuilder.newBuilder().build();
-    UriBuilder uriBuilder = UriBuilder.fromUri(getApiUrl()).path(url);
+
+    Client client = createClient().build();
+
+    UriBuilder uriBuilder = UriBuilder.fromUri(getRootUrl()).path(url);
 
     for (Map.Entry<String,Object> queryParam : queryMap.entrySet()) {
       uriBuilder.queryParam(queryParam.getKey(), queryParam.getValue());

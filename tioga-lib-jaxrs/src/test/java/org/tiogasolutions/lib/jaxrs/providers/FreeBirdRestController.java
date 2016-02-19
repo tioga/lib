@@ -113,7 +113,7 @@ public class FreeBirdRestController {
   @Path("/sample.pdf")
   @Produces(InetMediaType.APPLICATION_PDF_VALUE)
   public Response getSamplePdf() throws IOException {
-    InputStream is = getClass().getResourceAsStream("/tioga-lib-jaxrs-jackson/sample.pdf");
+    InputStream is = getClass().getResourceAsStream("/tioga-lib-jaxrs/sample.pdf");
     byte[] bytes = IoUtils.toBytes(is);
     return Response.ok(bytes).build();
   }

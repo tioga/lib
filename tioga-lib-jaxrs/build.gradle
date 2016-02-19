@@ -22,8 +22,8 @@ project(':tioga-lib-jaxrs') {
 
     testCompile("org.testng:testng:6.8.21")
     testCompile("org.tiogasolutions.dev:tioga-dev-testing:+")
-    testCompile("org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.17")
-    testCompile("org.glassfish.jersey.core:jersey-common:2.17")
+    testCompile("org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.22.2")
+    testCompile("org.glassfish.jersey.core:jersey-common:2.22.2")
   }
 
   apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))

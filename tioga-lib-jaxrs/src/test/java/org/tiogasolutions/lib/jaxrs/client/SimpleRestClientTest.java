@@ -16,6 +16,9 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import org.tiogasolutions.lib.jaxrs.providers.FreeBirdRestServer;
 
+import javax.naming.directory.BasicAttribute;
+import javax.ws.rs.core.Form;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
@@ -127,7 +130,7 @@ public class SimpleRestClientTest {
       assertEquals(e.getMessage(), "Exception translating java.time.LocalDate from json.");
     }
 
-    List<LocalDate> result = client.getList(LocalDate.class, "/date/2014-12-13/dates-in-month", SimpleRestClient.EMPTY_QUERY);
+    List<LocalDate> result = client.getList(LocalDate.class, "/date/2014-12-13/dates-in-month");
     List<LocalDate> dates = new ArrayList<>(result);
     assertNotNull(dates);
 
@@ -168,7 +171,7 @@ public class SimpleRestClientTest {
 
   public void testGetListOfStrings() throws Exception {
 
-    List<String> result = client.getList(String.class, "/date/2014-12-13/dates-in-month", SimpleRestClient.EMPTY_QUERY);
+    List<String> result = client.getList(String.class, "/date/2014-12-13/dates-in-month");
     List<String> dates = new ArrayList<>(result);
     assertNotNull(dates);
 
@@ -208,21 +211,21 @@ public class SimpleRestClientTest {
   }
 
   public void testGetBytes() throws Exception {
-    InputStream in = getClass().getResourceAsStream("/tioga-lib-jaxrs-jackson/sample.pdf");
+    InputStream in = getClass().getResourceAsStream("/tioga-lib-jaxrs/sample.pdf");
     assertNotNull(in);
     byte[] testBytes = IoUtils.toBytes(in);
-    byte[] pdfBytes = client.getBytes("/sample.pdf", SimpleRestClient.EMPTY_QUERY, "application/pdf");
+    byte[] pdfBytes = client.getBytes("/sample.pdf", Collections.emptyMap(), "application/pdf");
     assertEquals(pdfBytes, testBytes);
   }
 
   public void testGetQueryContent() throws Exception {
 
-    FreeBird freeBird = client.get(FreeBird.class, "/free-bird", SimpleRestClient.EMPTY_QUERY, "application/json");
+    FreeBird freeBird = client.get(FreeBird.class, "/free-bird", Collections.emptyMap(), "application/json");
     validFreeBird(freeBird, "Hi, my name is Moe!");
 
 
     try {
-      client.get(FreeBird.class, "/free-bird", SimpleRestClient.EMPTY_QUERY, "text/plain");
+      client.get(FreeBird.class, "/free-bird", Collections.emptyMap(), "text/plain");
       fail("Expected exception.");
     } catch (ApiException e) {
       assertEquals(e.getStatusCode(), 406);
@@ -240,7 +243,7 @@ public class SimpleRestClientTest {
         "\n" +
         "\t- Micky Mouse");
 
-    String json = client.get(String.class, "/free-bird", SimpleRestClient.EMPTY_QUERY, "application/json");
+    String json = client.get(String.class, "/free-bird", Collections.emptyMap(), "application/json");
     assertEquals(json, "{\n" +
         "  \"stringValue\" : \"string-value\",\n" +
         "  \"longValue\" : 9223372036854775807,\n" +
@@ -342,7 +345,7 @@ public class SimpleRestClientTest {
   }
 
   public void testGetApiUrl() throws Exception {
-    assertEquals(client.getApiUrl(), FreeBirdRestServer.API_URI.toString());
+    assertEquals(client.getRootUrl(), FreeBirdRestServer.API_URI.toString());
   }
 
   public void testAssertResponse() throws Exception {
@@ -416,4 +419,39 @@ public class SimpleRestClientTest {
     assertNull(response);
   }
 */
+
+  public void testBasicAuth() {
+    BasicAuthorization basicAuth = new BasicAuthorization("aNdeaszuMMcNuRqHlaehVQ", "");
+    SimpleRestClient client = new SimpleRestClient(translator, "https://api.easypost.com/v2", basicAuth);
+
+    Form form = new Form();
+    form.param("parcel[weight]", "10");
+    form.param("parcel[predefined_package]", "Parcel");
+
+    String content = client.post(String.class, "/parcels", form);
+    Assert.assertNotNull(content);
+  }
+
+  public void testBearerAuth() {
+    BasicAuthorization basicAuth = new BasicAuthorization("cf","");
+    SimpleRestClient client = new SimpleRestClient(translator, "https://login.run.pivotal.io", basicAuth);
+    client.setIgnoringCertificates(true);
+
+    Form form = new Form();
+    form.param("grant_type", "password");
+    form.param("username", "me@jacobparr.com");
+    form.param("password", "go2Pivotal");
+
+    String content = client.post(String.class, "/token", form);
+    Assert.assertNotNull(content);
+  }
 }
+
+
+
+
+
+
+
+
+

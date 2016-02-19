@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.tiogasolutions.dev:tioga-dev-testing:4.2.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.dev/tioga-dev-testing/4.2.2/95146d2a817c9f65ed8a02c07f950f55728e2acc/tioga-dev-testing-4.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.dev/tioga-dev-testing/4.2.2/6123287f2e46c79904a3e6e2164a5f7e545b2d78/tioga-dev-testing-4.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
