@@ -31,7 +31,7 @@ public class SimpleRestClientTest {
   @BeforeClass
   public void beforeClass() {
     server = FreeBirdRestServer.startServer();
-    client = new SimpleRestClient(translator, FreeBirdRestServer.API_URI.toString(), "free", "bird");
+    client = new SimpleRestClient(translator, FreeBirdRestServer.API_URI, new BasicAuthorization("free", "bird"));
   }
 
   @AfterClass
@@ -345,17 +345,9 @@ public class SimpleRestClientTest {
     assertEquals(client.getApiUrl(), FreeBirdRestServer.API_URI.toString());
   }
 
-  public void testGetUserName() throws Exception {
-    assertEquals(client.getUsername(), "free");
-  }
-
-  public void testGetPassword() throws Exception {
-    assertEquals(client.getPassword(), "bird");
-  }
-
   public void testAssertResponse() throws Exception {
 
-    SimpleRestClient client = new SimpleRestClient(null, null, null, null);
+    SimpleRestClient client = new SimpleRestClient(null, null, null);
 
     client.assertResponse(200, null);
 
@@ -382,7 +374,7 @@ public class SimpleRestClientTest {
 
   public void testToMap() throws Exception {
 
-    SimpleRestClient client = new SimpleRestClient(null, null, null, null);
+    SimpleRestClient client = new SimpleRestClient(null, null, null);
 
     Map map = client.toMap();
     assertEquals(map.size(), 0);
@@ -403,60 +395,6 @@ public class SimpleRestClientTest {
   private void validateMapEntry(Map map, String key, String value) {
     assertTrue(map.containsKey(key));
     assertEquals(map.get(key), value);
-  }
-
-  public void testParseUrl() throws Exception {
-    assertEquals(SimpleRestClient.parseUrl(null),                                         null);
-    assertEquals(SimpleRestClient.parseUrl(""),                                           null);
-    assertEquals(SimpleRestClient.parseUrl("http://google.com"),                          "http://google.com");
-    assertEquals(SimpleRestClient.parseUrl("http://google.com/test"),                     "http://google.com/test");
-    assertEquals(SimpleRestClient.parseUrl("https://google.com"),                         "https://google.com");
-    assertEquals(SimpleRestClient.parseUrl("https://google.com/test"),                    "https://google.com/test");
-    assertEquals(SimpleRestClient.parseUrl("http://username@google.com"),                 "http://google.com");
-    assertEquals(SimpleRestClient.parseUrl("http://username@google.com/test"),            "http://google.com/test");
-    assertEquals(SimpleRestClient.parseUrl("https://username@google.com"),                "https://google.com");
-    assertEquals(SimpleRestClient.parseUrl("https://username@google.com/test"),           "https://google.com/test");
-    assertEquals(SimpleRestClient.parseUrl("http://username:password@google.com"),        "http://google.com");
-    assertEquals(SimpleRestClient.parseUrl("http://username:password@google.com/test"),   "http://google.com/test");
-    assertEquals(SimpleRestClient.parseUrl("https://username:password@google.com"),       "https://google.com");
-    assertEquals(SimpleRestClient.parseUrl("https://username:password@google.com/test"),  "https://google.com/test");
-  }
-
-  public void testParseAuth() throws Exception {
-    assertEquals(SimpleRestClient.parseAuth(null),                                          null);
-    assertEquals(SimpleRestClient.parseAuth(""),                                            null);
-    assertEquals(SimpleRestClient.parseAuth("http://google.com"),                          null);
-    assertEquals(SimpleRestClient.parseAuth("http://google.com/test"),                     null);
-    assertEquals(SimpleRestClient.parseAuth("https://google.com"),                         null);
-    assertEquals(SimpleRestClient.parseAuth("https://google.com/test"),                    null);
-    assertEquals(SimpleRestClient.parseAuth("http://username@google.com"),                 "username");
-    assertEquals(SimpleRestClient.parseAuth("http://username@google.com/test"),            "username");
-    assertEquals(SimpleRestClient.parseAuth("https://username@google.com"),                "username");
-    assertEquals(SimpleRestClient.parseAuth("https://username@google.com/test"),           "username");
-    assertEquals(SimpleRestClient.parseAuth("http://username:password@google.com"),        "username:password");
-    assertEquals(SimpleRestClient.parseAuth("http://username:password@google.com/test"),   "username:password");
-    assertEquals(SimpleRestClient.parseAuth("https://username:password@google.com"),       "username:password");
-    assertEquals(SimpleRestClient.parseAuth("https://username:password@google.com/test"),  "username:password");
-  }
-
-  public void parseUserFromAuth() throws Exception {
-    assertEquals(SimpleRestClient.parseUserFromAuth(null),                null);
-    assertEquals(SimpleRestClient.parseUserFromAuth(""),                  null);
-    assertEquals(SimpleRestClient.parseUserFromAuth(":"),                 null);
-    assertEquals(SimpleRestClient.parseUserFromAuth("username"),          "username");
-    assertEquals(SimpleRestClient.parseUserFromAuth("username:"),         "username");
-    assertEquals(SimpleRestClient.parseUserFromAuth("username:password"), "username");
-    assertEquals(SimpleRestClient.parseUserFromAuth(":password"),         null);
-  }
-
-  public void parsePassFromAuth() throws Exception {
-    assertEquals(SimpleRestClient.parsePassFromAuth(null),                null);
-    assertEquals(SimpleRestClient.parsePassFromAuth(""),                  null);
-    assertEquals(SimpleRestClient.parsePassFromAuth(":"),                 null);
-    assertEquals(SimpleRestClient.parsePassFromAuth("username"),          null);
-    assertEquals(SimpleRestClient.parsePassFromAuth("username:"),         null);
-    assertEquals(SimpleRestClient.parsePassFromAuth("username:password"), "password");
-    assertEquals(SimpleRestClient.parsePassFromAuth(":password"),         "password");
   }
 
 /*

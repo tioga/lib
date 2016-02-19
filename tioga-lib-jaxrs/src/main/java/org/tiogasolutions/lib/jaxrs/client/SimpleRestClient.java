@@ -4,41 +4,37 @@ import java.io.*;
 import java.util.*;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.*;
-import javax.xml.bind.DatatypeConverter;
+
 import org.tiogasolutions.dev.common.*;
 import org.tiogasolutions.dev.common.exceptions.ApiException;
 import org.tiogasolutions.dev.common.json.JsonTranslator;
 import org.tiogasolutions.dev.common.net.HttpStatusCode;
 import org.tiogasolutions.dev.domain.query.QueryResult;
 
+@SuppressWarnings("unused")
 public class SimpleRestClient {
 
 
   public static final Map<String,Object> EMPTY_QUERY = Collections.emptyMap();
 
-  private boolean notFoundToNull;
-  private final JsonTranslator translator;
+  protected boolean notFoundToNull;
+  protected final JsonTranslator translator;
 
-  private final String apiUrl;
-  private final String username;
-  private final String password;
+  protected final String apiUrl;
 
-  public SimpleRestClient(JsonTranslator translator, String apiUrl) {
-    this(false, translator, parseUrl(apiUrl), parseUserFromUrl(apiUrl), parsePassFromUrl(apiUrl));
+  protected final Authorization authorization;
+
+  public SimpleRestClient(JsonTranslator translator, Object apiUrl) {
+    this(translator, apiUrl, BasicAuthorization.fromUrl(apiUrl));
   }
 
-  public SimpleRestClient(JsonTranslator translator, String apiUrl, String authentication) {
-    this(false, translator, parseUrl(apiUrl), parseUserFromAuth(authentication), parsePassFromAuth(authentication));
+  public SimpleRestClient(JsonTranslator translator, Object apiUrl, Authorization authorization) {
+    this(false, translator, BasicAuthorization.removeBasicAuth(apiUrl), authorization);
   }
 
-  public SimpleRestClient(JsonTranslator translator, String apiUrl, String username, String password) {
-    this(false, translator, parseUrl(apiUrl), username, password);
-  }
-
-  public SimpleRestClient(boolean notFoundToNull, JsonTranslator translator, String apiUrl, String username, String password) {
-    this.apiUrl = apiUrl;
-    this.username = username;
-    this.password = password;
+  public SimpleRestClient(boolean notFoundToNull, JsonTranslator translator, Object apiUrl, Authorization authorization) {
+    this.apiUrl = (apiUrl == null) ? null : apiUrl.toString();
+    this.authorization = authorization;
 
     this.translator = translator;
     this.notFoundToNull = notFoundToNull;
@@ -52,85 +48,6 @@ public class SimpleRestClient {
   public void setNotFoundToNull(boolean notFoundToNull) {
     this.notFoundToNull = notFoundToNull;
   }
-
-  public static String parseUrl(String apiUrl) {
-    if (StringUtils.isBlank(apiUrl)) {
-      return null;
-    }
-
-    String auth = parseAuth(apiUrl);
-
-    if (StringUtils.isBlank(auth)) {
-      return apiUrl;
-    } else if (apiUrl.toLowerCase().startsWith("http://")) {
-      return apiUrl.replace("http://"+auth+"@", "http://");
-    } else if (apiUrl.toLowerCase().startsWith("https://")) {
-      return apiUrl.replace("https://"+auth+"@", "https://");
-    } else {
-      String msg = String.format("Unable to parse the specified URL - does not start with \"http://\" or \"https://\".");
-      throw new IllegalArgumentException(msg);
-    }
-  }
-
-  public static String parseAuth(String apiUrl) {
-    int pos;
-    if (StringUtils.isBlank(apiUrl)) {
-      return null;
-    } else if (apiUrl.toLowerCase().startsWith("http://")) {
-      pos = 7;
-    } else if (apiUrl.toLowerCase().startsWith("https://")) {
-      pos = 8;
-    } else {
-      String msg = String.format("Unable to parse the specified URL - does not start with \"http://\" or \"https://\".");
-      throw new IllegalArgumentException(msg);
-    }
-
-    String contents = apiUrl.substring(pos);
-    pos = contents.indexOf("/");
-    if (pos < 0) pos = contents.length();
-
-    String left = contents.substring(0, pos);
-
-    pos = left.indexOf("@");
-
-    if (pos < 0) {
-      return null;
-    } else {
-      return left.substring(0, pos);
-    }
-  }
-  public static String parseUserFromUrl(String apiUrl) {
-    String auth = parseAuth(apiUrl);
-    return parseUserFromAuth(auth);
-  }
-  public static String parsePassFromUrl(String apiUrl) {
-    String auth = parseAuth(apiUrl);
-    return parsePassFromAuth(auth);
-  }
-  public static String parseUserFromAuth(String authentication) {
-    if (StringUtils.isBlank(authentication)) {
-      return null;
-    }
-
-    int pos = authentication.indexOf(":");
-    if (pos < 0) return authentication;
-
-    String name = authentication.substring(0, pos);
-    return StringUtils.isNotBlank(name) ? name : null;
-  }
-  public static String parsePassFromAuth(String authentication) {
-    if (StringUtils.isBlank(authentication)) {
-      return null;
-    }
-
-    int pos = authentication.indexOf(":");
-    if (pos < 0) return null;
-
-    String pass = authentication.substring(pos+1);
-    return StringUtils.isNotBlank(pass) ? pass : null;
-  }
-
-
 
   public void put(String subUrl) {
     put(null, subUrl, null);
@@ -209,7 +126,7 @@ public class SimpleRestClient {
 
 
 
-  private <T> T translateResponse(Class<T> returnType, Response response) {
+  protected <T> T translateResponse(Class<T> returnType, Response response) {
     // The return type will use the string content...
     String content = response.readEntity(String.class);
 
@@ -290,12 +207,8 @@ public class SimpleRestClient {
     return apiUrl;
   }
 
-  public String getUsername() {
-    return username;
-  }
-
-  public String getPassword() {
-    return password;
+  public Authorization getAuthorization() {
+    return authorization;
   }
 
   protected void assertResponse(int status, String content) {
@@ -348,20 +261,10 @@ public class SimpleRestClient {
     WebTarget target = client.target(uriBuilder);
     Invocation.Builder builder = target.request(acceptedResponseTypes);
 
-    if (StringUtils.isNotBlank(getUsername())) {
-      builder.header("Authorization", getBasicAuthentication(getUsername(), getPassword()));
+    if (authorization != null) {
+      builder.header("Authorization", authorization.getHeaderValue());
     }
 
     return builder;
-  }
-
-  private static String getBasicAuthentication(String username, String password) {
-    try {
-      String token = username + ":" + password;
-      return "Basic " + DatatypeConverter.printBase64Binary(token.getBytes("UTF-8"));
-
-    } catch (UnsupportedEncodingException ex) {
-      throw new IllegalStateException("Cannot encode with UTF-8", ex);
-    }
   }
 }
