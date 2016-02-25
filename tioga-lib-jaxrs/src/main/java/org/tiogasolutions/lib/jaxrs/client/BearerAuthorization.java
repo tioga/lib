@@ -8,6 +8,10 @@ public class BearerAuthorization implements Authorization {
     this.accessToken = accessToken;
   }
 
+  public String getAccessToken() {
+    return accessToken;
+  }
+
   @Override
   public String getHeaderValue() {
     return "bearer " + accessToken;
