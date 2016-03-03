@@ -58,7 +58,7 @@ public abstract class DefaultCouchStore<T>{
   }
 
   public void expireCachedDatabases() {
-    for (String dbName : databaseAccessMap.keySet()) {
+    for (String dbName : databaseAccessMap.keySet().toArray(new String[0])) {
       long accessedAt = databaseAccessMap.get(dbName);
       if (System.currentTimeMillis() - accessedAt > 1000 * 60) {
         databaseMap.remove(dbName);
