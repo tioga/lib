@@ -15,11 +15,10 @@ import org.tiogasolutions.dev.common.StringUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class TiogaPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
 
@@ -72,5 +71,19 @@ public class TiogaPropertyPlaceholderConfigurer extends PropertyPlaceholderConfi
         }
 
         setLocations(ReflectUtils.toArray(Resource.class, resources));
+    }
+
+    protected void loadProperties(Properties props) throws IOException {
+        super.loadProperties(props);
+
+        // Override everything with the environment variables
+        for(Map.Entry<String,String> entry : System.getenv().entrySet()) {
+            props.put(entry.getKey(), entry.getValue());
+        }
+
+        // Lastly override everything with the system properties
+        for (Map.Entry<Object,Object> entry : System.getProperties().entrySet()) {
+            props.put(entry.getKey(), entry.getValue());
+        }
     }
 }
