@@ -13,5 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+project(':tioga-lib-spring') {
+    version = "1.0.0"
 
-include "tioga-lib-thymeleaf", "tioga-lib-servlet", "tioga-lib-jaxrs", "tioga-lib-couchace", "tioga-lib-selenium", "tioga-lib-spring-security", "tioga-lib-joda", "tioga-lib-spring-amazon", "tioga-lib-spring-couchace", "tioga-lib-spring"
+    dependencies {
+        compile("org.tiogasolutions.dev:tioga-dev-common:+")
+        compile("org.springframework:spring-context:4.1.6.RELEASE")
+        testCompile("org.testng:testng:6.8.21")
+    }
+
+    apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
+}

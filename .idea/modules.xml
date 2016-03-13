@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-joda/tioga-lib-joda.iml" filepath="$PROJECT_DIR$/tioga-lib-joda/tioga-lib-joda.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-selenium/tioga-lib-selenium.iml" filepath="$PROJECT_DIR$/tioga-lib-selenium/tioga-lib-selenium.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-servlet/tioga-lib-servlet.iml" filepath="$PROJECT_DIR$/tioga-lib-servlet/tioga-lib-servlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring/tioga-lib-spring.iml" filepath="$PROJECT_DIR$/tioga-lib-spring/tioga-lib-spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-amazon/tioga-lib-spring-amazon.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-amazon/tioga-lib-spring-amazon.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-couchace/tioga-lib-spring-couchace.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-couchace/tioga-lib-spring-couchace.iml" />
       <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-security/tioga-lib-spring-security.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-security/tioga-lib-spring-security.iml" />
