@@ -12,7 +12,6 @@ import org.springframework.core.io.UrlResource;
 import org.tiogasolutions.dev.common.EnvUtils;
 import org.tiogasolutions.dev.common.ReflectUtils;
 import org.tiogasolutions.dev.common.StringUtils;
-import org.tiogasolutions.dev.common.exceptions.ExceptionUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,7 +26,10 @@ public class TiogaPropertyPlaceholderConfigurer extends PropertyPlaceholderConfi
     private static final Logger log = LoggerFactory.getLogger(TiogaPropertyPlaceholderConfigurer.class);
 
     public TiogaPropertyPlaceholderConfigurer(String propertyName, String locationString) throws FileNotFoundException, MalformedURLException {
-        ExceptionUtils.assertNotNull(propertyName, "propertyName");
+        if (StringUtils.isBlank(propertyName)) {
+            String msg = "Unable to locate the secret properties file - the system or environment property name was not specified.";
+            throw new IllegalArgumentException(msg);
+        }
 
         List<Resource> resources = new ArrayList<>();
 
