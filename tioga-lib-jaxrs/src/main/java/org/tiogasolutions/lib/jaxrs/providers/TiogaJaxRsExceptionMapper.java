@@ -66,7 +66,7 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
 
   protected Response createResponse(int status, Throwable ex) {
     TiogaExceptionInfo exceptionInfo = new TiogaExceptionInfo(status, ex);
-    return Response.status(status).entity(exceptionInfo).build();
+    return Response.status(status).entity(exceptionInfo).type(MediaType.APPLICATION_JSON_TYPE).build();
   }
 
   protected void logException(Throwable throwable, int status) {
