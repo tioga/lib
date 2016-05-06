@@ -1,9 +1,12 @@
 package org.tiogasolutions.lib.jaxrs.client;
 
-import java.io.InputStream;
-import java.time.LocalDate;
-import java.util.*;
-import org.tiogasolutions.dev.common.*;
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import org.tiogasolutions.dev.common.DateUtils;
+import org.tiogasolutions.dev.common.IoUtils;
 import org.tiogasolutions.dev.common.exceptions.ApiException;
 import org.tiogasolutions.dev.common.fine.*;
 import org.tiogasolutions.dev.common.json.JsonTranslator;
@@ -11,18 +14,14 @@ import org.tiogasolutions.dev.common.net.HttpStatusCode;
 import org.tiogasolutions.dev.domain.locality.LatLng;
 import org.tiogasolutions.dev.jackson.TiogaJacksonTranslator;
 import org.tiogasolutions.dev.testing.domain.FreeBird;
-import org.glassfish.grizzly.http.server.HttpServer;
-import org.testng.Assert;
-import org.testng.annotations.*;
 import org.tiogasolutions.lib.jaxrs.providers.FreeBirdRestServer;
 
-import javax.naming.directory.BasicAttribute;
 import javax.ws.rs.core.Form;
+import java.io.InputStream;
+import java.time.LocalDate;
+import java.util.*;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.fail;
+import static org.testng.Assert.*;
 
 @Test
 public class SimpleRestClientTest {
