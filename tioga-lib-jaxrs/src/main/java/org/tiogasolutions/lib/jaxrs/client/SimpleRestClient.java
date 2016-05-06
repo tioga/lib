@@ -157,18 +157,18 @@ public class SimpleRestClient {
 
     public <T> T translateResponse(Class<T> returnType, Response response) {
 
-        String content = response.readEntity(String.class);
 
         if (response.getStatus() == 404 && notFoundToNull) return null;
-        assertResponse(response.getStatus(), content);
+        assertResponse(response);
 
         if (returnType == null) {
             return null;
 
         } else if (Response.class.equals(returnType)) {
-            returnType.cast(response);
+            return returnType.cast(response);
         }
 
+        String content = response.readEntity(String.class);
         return translateResponse(returnType, content);
     }
 
@@ -198,7 +198,7 @@ public class SimpleRestClient {
         byte[] bytes = IoUtils.toBytes(in);
 
         if (response.getStatus() == 404 && notFoundToNull) return null;
-        assertResponse(response.getStatus(), bytes.length, null);
+        assertResponse(response.getStatus(), null);
 
         return bytes;
     }
@@ -217,15 +217,14 @@ public class SimpleRestClient {
         Invocation.Builder builder = builder(subUrl, queryMap, headers, "application/json");
         Response response = builder.get();
 
-        String content = response.readEntity(String.class);
-
         if (response.getStatus() == 404 && notFoundToNull) return null;
-        assertResponse(response.getStatus(), content);
+        assertResponse(response);
 
         // Create a new list of the correct type.
         List<T> list = new ArrayList<>();
 
         // Then loop through everything - we have to treat the items in the list as objects
+        String content = response.readEntity(String.class);
         for (Object object : translator.fromJson(List.class, content, returnType)) {
             list.add(returnType.cast(object));
         }
@@ -257,21 +256,29 @@ public class SimpleRestClient {
         this.ignoringCertificates = ignoringCertificates;
     }
 
-    protected void assertResponse(int status, String content) {
-        int length = (content == null) ? -1 : content.length();
-        assertResponse(status, length, content);
+    protected void assertResponse(Response response) {
+        assertResponse(response.getStatus(), response);
     }
 
-    protected void assertResponse(int status, int length, String content) {
+    protected void assertResponse(int status, Response response) {
         HttpStatusCode statusCode = HttpStatusCode.findByCode(status);
+
         if (statusCode.isSuccess() == false) {
-            String msg = String.format("Unexpected response: %s %s", status, statusCode.getReason());
-            String[] traits = {
-                    String.format("length:%s", length),
-                    String.format("content:%s", content)
-            };
-            throw ApiException.fromCode(statusCode, msg, traits);
+            String content = (response == null) ? null : response.readEntity(String.class);
+            throw buildException(statusCode, content);
         }
+    }
+
+    protected ApiException buildException(HttpStatusCode statusCode, String content) {
+        int length = (content == null) ? -1 : content.length();
+
+        String msg = String.format("Unexpected response: %s %s", statusCode.getCode(), statusCode.getReason());
+        String[] traits = {
+                String.format("length:%s", length),
+                String.format("content:%s", content)
+        };
+
+        return ApiException.fromCode(statusCode, msg, traits);
     }
 
     protected Map<String, Object> toMap(String... keyValuePairs) {
