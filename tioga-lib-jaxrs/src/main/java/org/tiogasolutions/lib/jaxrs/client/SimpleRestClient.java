@@ -264,8 +264,12 @@ public class SimpleRestClient {
         HttpStatusCode statusCode = HttpStatusCode.findByCode(status);
 
         if (statusCode.isSuccess() == false) {
-            String content = (response == null) ? null : response.readEntity(String.class);
-            throw buildException(statusCode, content);
+            try {
+                String content = (response == null) ? null : response.readEntity(String.class);
+                throw buildException(statusCode, content);
+            } catch (Exception e) {
+                throw buildException(statusCode, "<< unreadable >>");
+            }
         }
     }
 
