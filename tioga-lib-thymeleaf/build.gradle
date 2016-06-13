@@ -1,5 +1,6 @@
 project(":tioga-lib-thymeleaf") {
-  version = "1.1.2"
+
+  version = "1.1.4"
 
   dependencies {
     compile("org.tiogasolutions.dev:tioga-dev-common:+")

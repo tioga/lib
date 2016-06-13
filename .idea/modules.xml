@@ -2,17 +2,37 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/lib.iml" filepath="$PROJECT_DIR$/lib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-couchace/tioga-lib-couchace.iml" filepath="$PROJECT_DIR$/tioga-lib-couchace/tioga-lib-couchace.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-jaxrs/tioga-lib-jaxrs.iml" filepath="$PROJECT_DIR$/tioga-lib-jaxrs/tioga-lib-jaxrs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-joda/tioga-lib-joda.iml" filepath="$PROJECT_DIR$/tioga-lib-joda/tioga-lib-joda.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-selenium/tioga-lib-selenium.iml" filepath="$PROJECT_DIR$/tioga-lib-selenium/tioga-lib-selenium.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-servlet/tioga-lib-servlet.iml" filepath="$PROJECT_DIR$/tioga-lib-servlet/tioga-lib-servlet.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring/tioga-lib-spring.iml" filepath="$PROJECT_DIR$/tioga-lib-spring/tioga-lib-spring.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-amazon/tioga-lib-spring-amazon.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-amazon/tioga-lib-spring-amazon.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-couchace/tioga-lib-spring-couchace.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-couchace/tioga-lib-spring-couchace.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-spring-security/tioga-lib-spring-security.iml" filepath="$PROJECT_DIR$/tioga-lib-spring-security/tioga-lib-spring-security.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tioga-lib-thymeleaf/tioga-lib-thymeleaf.iml" filepath="$PROJECT_DIR$/tioga-lib-thymeleaf/tioga-lib-thymeleaf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-couchace/tioga-lib-couchace.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-couchace/tioga-lib-couchace.iml" group="tioga-lib-couchace" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-couchace/tioga-lib-couchace_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-couchace/tioga-lib-couchace_main.iml" group="tioga-lib-couchace" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-couchace/tioga-lib-couchace_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-couchace/tioga-lib-couchace_test.iml" group="tioga-lib-couchace" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-jaxrs/tioga-lib-jaxrs.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-jaxrs/tioga-lib-jaxrs.iml" group="tioga-lib-jaxrs" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-jaxrs/tioga-lib-jaxrs_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-jaxrs/tioga-lib-jaxrs_main.iml" group="tioga-lib-jaxrs" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-jaxrs/tioga-lib-jaxrs_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-jaxrs/tioga-lib-jaxrs_test.iml" group="tioga-lib-jaxrs" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda.iml" group="tioga-lib-joda" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda_main.iml" group="tioga-lib-joda" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda_test.iml" group="tioga-lib-joda" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium.iml" group="tioga-lib-selenium" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium_main.iml" group="tioga-lib-selenium" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium_test.iml" group="tioga-lib-selenium" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-servlet/tioga-lib-servlet.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-servlet/tioga-lib-servlet.iml" group="tioga-lib-servlet" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-servlet/tioga-lib-servlet_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-servlet/tioga-lib-servlet_main.iml" group="tioga-lib-servlet" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-servlet/tioga-lib-servlet_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-servlet/tioga-lib-servlet_test.iml" group="tioga-lib-servlet" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring/tioga-lib-spring.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring/tioga-lib-spring.iml" group="tioga-lib-spring" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring-amazon/tioga-lib-spring-amazon.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring-amazon/tioga-lib-spring-amazon.iml" group="tioga-lib-spring-amazon" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring-amazon/tioga-lib-spring-amazon_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring-amazon/tioga-lib-spring-amazon_main.iml" group="tioga-lib-spring-amazon" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring-amazon/tioga-lib-spring-amazon_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring-amazon/tioga-lib-spring-amazon_test.iml" group="tioga-lib-spring-amazon" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring-couchace/tioga-lib-spring-couchace.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring-couchace/tioga-lib-spring-couchace.iml" group="tioga-lib-spring-couchace" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring-couchace/tioga-lib-spring-couchace_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring-couchace/tioga-lib-spring-couchace_main.iml" group="tioga-lib-spring-couchace" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring-couchace/tioga-lib-spring-couchace_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring-couchace/tioga-lib-spring-couchace_test.iml" group="tioga-lib-spring-couchace" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring-security/tioga-lib-spring-security.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring-security/tioga-lib-spring-security.iml" group="tioga-lib-spring-security" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring-security/tioga-lib-spring-security_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring-security/tioga-lib-spring-security_main.iml" group="tioga-lib-spring-security" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring-security/tioga-lib-spring-security_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring-security/tioga-lib-spring-security_test.iml" group="tioga-lib-spring-security" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring/tioga-lib-spring_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring/tioga-lib-spring_main.iml" group="tioga-lib-spring" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-spring/tioga-lib-spring_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-spring/tioga-lib-spring_test.iml" group="tioga-lib-spring" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-thymeleaf/tioga-lib-thymeleaf.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-thymeleaf/tioga-lib-thymeleaf.iml" group="tioga-lib-thymeleaf" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-thymeleaf/tioga-lib-thymeleaf_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-thymeleaf/tioga-lib-thymeleaf_main.iml" group="tioga-lib-thymeleaf" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-thymeleaf/tioga-lib-thymeleaf_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-thymeleaf/tioga-lib-thymeleaf_test.iml" group="tioga-lib-thymeleaf" />
     </modules>
   </component>
 </project>

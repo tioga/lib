@@ -20,5 +20,27 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tioga-lib-couchace_main" target="1.8" />
+      <module name="tioga-lib-couchace_test" target="1.8" />
+      <module name="tioga-lib-jaxrs_main" target="1.8" />
+      <module name="tioga-lib-jaxrs_test" target="1.8" />
+      <module name="tioga-lib-joda_main" target="1.8" />
+      <module name="tioga-lib-joda_test" target="1.8" />
+      <module name="tioga-lib-selenium_main" target="1.8" />
+      <module name="tioga-lib-selenium_test" target="1.8" />
+      <module name="tioga-lib-servlet_main" target="1.8" />
+      <module name="tioga-lib-servlet_test" target="1.8" />
+      <module name="tioga-lib-spring-amazon_main" target="1.8" />
+      <module name="tioga-lib-spring-amazon_test" target="1.8" />
+      <module name="tioga-lib-spring-couchace_main" target="1.8" />
+      <module name="tioga-lib-spring-couchace_test" target="1.8" />
+      <module name="tioga-lib-spring-security_main" target="1.8" />
+      <module name="tioga-lib-spring-security_test" target="1.8" />
+      <module name="tioga-lib-spring_main" target="1.8" />
+      <module name="tioga-lib-spring_test" target="1.8" />
+      <module name="tioga-lib-thymeleaf_main" target="1.8" />
+      <module name="tioga-lib-thymeleaf_test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
