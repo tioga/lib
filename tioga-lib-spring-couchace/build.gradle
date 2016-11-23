@@ -18,7 +18,7 @@ project(':tioga-lib-spring-couchace') {
 
   dependencies {
     compile("org.tiogasolutions.lib:tioga-lib-couchace:+")
-    compile("org.springframework:spring-beans:4.1.6.RELEASE")
+    compile("org.springframework:spring-beans:4.3.2.RELEASE")
 
     testCompile ("org.testng:testng:6.8.21")
   }

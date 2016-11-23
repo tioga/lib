@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 project(':tioga-lib-spring-amazon') {
-  version = "1.1.5"
+    version = "1.1.5"
 
-  dependencies {
-    compile("org.tiogasolutions.dev:tioga-dev-common:+")
-    compile("com.amazonaws:aws-java-sdk:1.9.31")
-    compile("org.springframework:spring-beans:4.1.6.RELEASE")
+    dependencies {
+        compile("org.tiogasolutions.dev:tioga-dev-common:+")
 
-    compile("commons-logging:commons-logging:1.2") {force = true}
+        compile("com.amazonaws:aws-java-sdk:1.9.31")
+        compile("commons-logging:commons-logging:1.2") { force = true }
 
-    testCompile ("org.testng:testng:6.8.21")
-  }
+        compile("org.springframework:spring-beans:4.3.2.RELEASE")
 
-  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
+        testCompile("org.testng:testng:6.8.21")
+    }
+
+    apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }

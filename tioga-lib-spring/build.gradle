@@ -18,7 +18,7 @@ project(':tioga-lib-spring') {
 
     dependencies {
         compile("org.tiogasolutions.dev:tioga-dev-common:+")
-        compile("org.springframework:spring-context:4.1.6.RELEASE")
+        compile("org.springframework:spring-context:4.3.2.RELEASE")
         testCompile("org.testng:testng:6.8.21")
     }
 
