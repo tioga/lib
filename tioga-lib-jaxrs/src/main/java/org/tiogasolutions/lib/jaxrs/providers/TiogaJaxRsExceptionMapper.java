@@ -1,15 +1,19 @@
 package org.tiogasolutions.lib.jaxrs.providers;
 
-import java.util.*;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.*;
-import javax.ws.rs.ext.*;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tiogasolutions.dev.common.exceptions.*;
+import org.tiogasolutions.dev.common.exceptions.ApiException;
 import org.tiogasolutions.dev.common.net.HttpStatusCode;
 import org.tiogasolutions.lib.jaxrs.domain.TiogaExceptionInfo;
+
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.ext.ExceptionMapper;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throwable> {
 

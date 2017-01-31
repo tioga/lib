@@ -1,8 +1,10 @@
 package org.tiogasolutions.lib.joda;
 
-import java.util.*;
-import org.tiogasolutions.dev.common.EqualsUtils;
 import org.joda.time.*;
+import org.tiogasolutions.dev.common.EqualsUtils;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class JodaDateUtils {
 
