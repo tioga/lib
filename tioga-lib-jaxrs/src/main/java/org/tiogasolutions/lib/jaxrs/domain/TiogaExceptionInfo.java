@@ -1,40 +1,31 @@
 package org.tiogasolutions.lib.jaxrs.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.tiogasolutions.dev.common.exceptions.ExceptionUtils;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class TiogaExceptionInfo {
 
-  private final int status;
-  private final String message;
+    private final int code;
+    private final String message;
 
-  private final List<String> causes = new LinkedList<>();
-
-  public TiogaExceptionInfo(int status, Throwable ex) {
-    this.status = status;
-    this.message = ExceptionUtils.getMessage(ex);
-
-    List<? extends Throwable> allCauses = ExceptionUtils.getRootCauses(ex);
-
-    for (Throwable cause : allCauses) {
-      String msg = ExceptionUtils.getMessage(cause);
-      causes.add(msg);
+    @JsonCreator
+    public TiogaExceptionInfo(@JsonProperty("code") int code,
+                              @JsonProperty("message") String message) {
+        this.code = code;
+        this.message = message;
     }
 
-    causes.remove(0); // Remove the original exception.
-  }
+    public TiogaExceptionInfo(int code, Throwable ex) {
+        this.code = code;
+        this.message = ExceptionUtils.getMessage(ex);
+    }
 
-  public int getStatus() {
-    return status;
-  }
+    public int getCode() {
+        return code;
+    }
 
-  public String getMessage() {
-    return message;
-  }
-
-  public List<String> getCauses() {
-    return causes;
-  }
+    public String getMessage() {
+        return message;
+    }
 }

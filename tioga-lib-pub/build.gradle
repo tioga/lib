@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 project(':tioga-lib-pub') {
-  version = "1.0.0"
 
-  dependencies {
-    compile("org.tiogasolutions.dev:tioga-dev-jackson:+")
+    version = "1.0.1"
 
-    testCompile("org.tiogasolutions.dev:tioga-dev-jackson:+")
-    testCompile ("org.testng:testng:6.8.21")
-  }
+    dependencies {
+        compile("org.tiogasolutions.dev:tioga-dev-jackson:+")
 
-  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
+        testCompile("org.tiogasolutions.dev:tioga-dev-jackson:+")
+        testCompile("org.testng:testng:6.8.21")
+    }
+
+    apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }

@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 project(':tioga-lib-jaxrs') {
-  version = "5.1.6"
 
-  dependencies {
-    compile ("javax.ws.rs:javax.ws.rs-api:2.0.1")
-    compile("org.tiogasolutions.dev:tioga-dev-jackson:+")
+    version = "5.1.7"
 
-    testCompile("org.testng:testng:6.8.21")
-    testCompile("org.tiogasolutions.dev:tioga-dev-testing:+")
-    testCompile("org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.22.2")
-    testCompile("org.glassfish.jersey.core:jersey-common:2.22.2")
-  }
+    dependencies {
+        compile("javax.ws.rs:javax.ws.rs-api:2.0.1")
+        compile("org.tiogasolutions.dev:tioga-dev-jackson:+")
 
-  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
+        testCompile("org.testng:testng:6.8.21")
+        testCompile("org.tiogasolutions.dev:tioga-dev-testing:+")
+        testCompile("org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.22.2")
+        testCompile("org.glassfish.jersey.core:jersey-common:2.22.2")
+    }
+
+    apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))
 }
