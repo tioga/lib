@@ -1,0 +1,46 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - gradle --quiet clean build javadoc htmlDependencyReport
+
+  post_build:
+    commands:
+      - if [ -d "./tioga-lib-couchace/build/reports" ];         then aws s3 sync ./tioga-lib-couchace/build/reports         s3://static.tiogasolutions.org/tioga-lib/tioga-lib-couchace/reports --delete; fi
+      - if [ -d "./tioga-lib-couchace/build/docs" ];            then aws s3 sync ./tioga-lib-couchace/build/docs            s3://static.tiogasolutions.org/tioga-lib/tioga-lib-couchace/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-jaxrs/build/reports" ];            then aws s3 sync ./tioga-lib-jaxrs/build/reports            s3://static.tiogasolutions.org/tioga-lib/tioga-lib-jaxrs/reports --delete; fi
+      - if [ -d "./tioga-lib-jaxrs/build/docs" ];               then aws s3 sync ./tioga-lib-jaxrs/build/docs               s3://static.tiogasolutions.org/tioga-lib/tioga-lib-jaxrs/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-joda/build/reports" ];             then aws s3 sync ./tioga-lib-joda/build/reports             s3://static.tiogasolutions.org/tioga-lib/tioga-lib-joda/reports --delete; fi
+      - if [ -d "./tioga-lib-joda/build/docs" ];                then aws s3 sync ./tioga-lib-joda/build/docs                s3://static.tiogasolutions.org/tioga-lib/tioga-lib-joda/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-pub/build/reports" ];              then aws s3 sync ./tioga-lib-pub/build/reports              s3://static.tiogasolutions.org/tioga-lib/tioga-lib-pub/reports --delete; fi
+      - if [ -d "./tioga-lib-pub/build/docs" ];                 then aws s3 sync ./tioga-lib-pub/build/docs                 s3://static.tiogasolutions.org/tioga-lib/tioga-lib-pub/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-selenium/build/reports" ];         then aws s3 sync ./tioga-lib-selenium/build/reports         s3://static.tiogasolutions.org/tioga-lib/tioga-lib-selenium/reports --delete; fi
+      - if [ -d "./tioga-lib-selenium/build/docs" ];            then aws s3 sync ./tioga-lib-selenium/build/docs            s3://static.tiogasolutions.org/tioga-lib/tioga-lib-selenium/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-servlet/build/reports" ];          then aws s3 sync ./tioga-lib-servlet/build/reports          s3://static.tiogasolutions.org/tioga-lib/tioga-lib-servlet/reports --delete; fi
+      - if [ -d "./tioga-lib-servlet/build/docs" ];             then aws s3 sync ./tioga-lib-servlet/build/docs             s3://static.tiogasolutions.org/tioga-lib/tioga-lib-servlet/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-spring/build/reports" ];           then aws s3 sync ./tioga-lib-spring/build/reports           s3://static.tiogasolutions.org/tioga-lib/tioga-lib-spring/reports --delete; fi
+      - if [ -d "./tioga-lib-spring/build/docs" ];              then aws s3 sync ./tioga-lib-spring/build/docs              s3://static.tiogasolutions.org/tioga-lib/tioga-lib-spring/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-spring-amazon/build/reports" ];    then aws s3 sync ./tioga-lib-spring-amazon/build/reports    s3://static.tiogasolutions.org/tioga-lib/tioga-lib-spring-amazon/reports --delete; fi
+      - if [ -d "./tioga-lib-spring-amazon/build/docs" ];       then aws s3 sync ./tioga-lib-spring-amazon/build/docs       s3://static.tiogasolutions.org/tioga-lib/tioga-lib-spring-amazon/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-spring-couchace/build/reports" ];  then aws s3 sync ./tioga-lib-spring-couchace/build/reports  s3://static.tiogasolutions.org/tioga-lib/tioga-lib-spring-couchace/reports --delete; fi
+      - if [ -d "./tioga-lib-spring-couchace/build/docs" ];     then aws s3 sync ./tioga-lib-spring-couchace/build/docs     s3://static.tiogasolutions.org/tioga-lib/tioga-lib-spring-couchace/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-spring-security/build/reports" ];  then aws s3 sync ./tioga-lib-spring-security/build/reports  s3://static.tiogasolutions.org/tioga-lib/tioga-lib-spring-security/reports --delete; fi
+      - if [ -d "./tioga-lib-spring-security/build/docs" ];     then aws s3 sync ./tioga-lib-spring-security/build/docs     s3://static.tiogasolutions.org/tioga-lib/tioga-lib-spring-security/docs --delete; fi
+      -
+      - if [ -d "./tioga-lib-thymeleaf/build/reports" ];        then aws s3 sync ./tioga-lib-thymeleaf/build/reports        s3://static.tiogasolutions.org/tioga-lib/tioga-lib-thymeleaf/reports --delete; fi
+      - if [ -d "./tioga-lib-thymeleaf/build/docs" ];           then aws s3 sync ./tioga-lib-thymeleaf/build/docs           s3://static.tiogasolutions.org/tioga-lib/tioga-lib-thymeleaf/docs --delete; fi
+
+artifacts:
+  discard-paths: no
+  files:
+    - /**/*

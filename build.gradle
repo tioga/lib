@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 plugins {
-  id "com.github.ben-manes.versions" version "0.8"
-  id 'org.hidetake.ssh' version '1.1.2'
-  id 'com.kageiit.url-cache' version '1.0.0'
+    id "com.github.ben-manes.versions" version "0.8"
+    id 'org.hidetake.ssh' version '1.1.2'
+    id 'com.kageiit.url-cache' version '1.0.0'
 }
 
 wrapper {
@@ -27,26 +27,26 @@ apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/
 
 subprojects {
 
-  group = "org.tiogasolutions.lib"
+    group = "org.tiogasolutions.lib"
 
-  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-reports.gradle"))
-  apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-versions.gradle"))
+    apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-versions.gradle"))
+    apply plugin: "project-report"
 
-  targetCompatibility = "1.8"
-  sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+    sourceCompatibility = "1.8"
 
-  configurations.all({
-    resolutionStrategy {
-      if (System.getProperty("no-fail-version-conflict") != "true") {
-        failOnVersionConflict()
-      }
+    configurations.all({
+        resolutionStrategy {
+            if (System.getProperty("no-fail-version-conflict") != "true") {
+                failOnVersionConflict()
+            }
+        }
+    })
+
+    ext {
+        pomProjectDescription = "Tioga Solutions"
+        pomUrl = 'https://www.tiogasolutions.org'
+        pomScmUrl = "https://github.com/tioga"
+        pomScmConnection = "https://github.com/tioga/lib.git"
     }
-  })
-
-  ext {
-    pomProjectDescription = "Tioga Solutions"
-    pomUrl = 'https://www.tiogasolutions.org'
-    pomScmUrl = "https://github.com/tioga"
-    pomScmConnection = "https://github.com/tioga/lib.git"
-  }
 }
