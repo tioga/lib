@@ -15,7 +15,7 @@ public class TiogaExceptionInfoTest {
         Exception ex = ApiException.notFound("This really sucks");
         TiogaExceptionInfo oldInfo = new TiogaExceptionInfo(404, ex);
 
-        Assert.assertEquals(oldInfo.getStatus(), 404);
+        Assert.assertEquals(oldInfo.getCode(), 404);
         Assert.assertEquals(oldInfo.getMessage(), "This really sucks");
     }
 

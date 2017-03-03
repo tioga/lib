@@ -1,48 +1,62 @@
 package org.tiogasolutions.pub;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.tiogasolutions.dev.common.net.HttpStatusCode;
 
+@JsonPropertyOrder({ "_response", "_links" })
 public class PubItem {
 
-    @JsonIgnore
-    private final PubStatus status;
-
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private final PubResponse _response;
     private final PubLinks _links;
 
     @JsonCreator
-    public PubItem(@JsonProperty("status") PubStatus status,
-                   @JsonProperty("_links") PubLinks _links) {
+    protected PubItem(@JsonProperty("_status") PubResponse _response,
+                      @JsonProperty("_links") PubLinks _links) {
 
-        this.status = (status != null) ? status : new PubStatus(HttpStatusCode.UNDEFINED);
+        this._response = (_response != null) ? _response : new PubResponse(HttpStatusCode.UNDEFINED);
         this._links = (_links != null) ? _links : PubLinks.empty();
+    }
+
+    public PubItem(PubResponse _response) {
+        this(_response, null);
+    }
+
+    public PubItem(int code) {
+        this(code, null);
+    }
+
+    public PubItem(int code, PubLinks _links) {
+        this(toStatus(code), _links);
+    }
+
+    public PubItem(HttpStatusCode statusCode) {
+        this(statusCode, null);
+    }
+
+    public PubItem(HttpStatusCode statusCode, PubLinks _links) {
+        this(toStatus(statusCode), _links);
     }
 
     public PubLinks get_links() {
         return _links;
     }
 
-    public PubStatus getStatus() {
-        return status;
+    public PubResponse get_response() {
+        return _response;
     }
 
     public PubLink getLink(String rel) {
         return _links.getLink(rel);
     }
 
-    public static PubItem create(PubStatus _status) {
-        return new PubItem(_status, null);
+    public static PubResponse toStatus(int code) {
+        HttpStatusCode statusCode = HttpStatusCode.findByCode(code);
+        return new PubResponse(statusCode);
     }
 
-    public static PubItem create(int statusCode, PubLinks _links) {
-        return new PubItem(new PubStatus(HttpStatusCode.findByCode(statusCode)), _links);
-    }
-
-    public static PubItem create(HttpStatusCode statusCode, PubLinks _links) {
-        return new PubItem(new PubStatus(statusCode), _links);
+    public static PubResponse toStatus(HttpStatusCode statusCode) {
+        return new PubResponse(statusCode);
     }
 }
