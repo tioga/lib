@@ -15,9 +15,10 @@
  */
 project(':tioga-lib-jaxrs') {
 
-    version = "5.1.7"
+    version = "5.1.8"
 
     dependencies {
+        compile(project(":tioga-lib-pub"))
         compile("javax.ws.rs:javax.ws.rs-api:2.0.1")
         compile("org.tiogasolutions.dev:tioga-dev-jackson:+")
 

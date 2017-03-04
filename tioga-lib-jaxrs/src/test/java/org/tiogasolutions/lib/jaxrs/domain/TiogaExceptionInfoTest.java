@@ -12,11 +12,10 @@ public class TiogaExceptionInfoTest {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        Exception ex = ApiException.notFound("This really sucks");
-        TiogaExceptionInfo oldInfo = new TiogaExceptionInfo(404, ex);
+        ApiException ex = ApiException.notFound("This really sucks");
+        TiogaExceptionInfo oldInfo = new TiogaExceptionInfo(ex);
 
-        Assert.assertEquals(oldInfo.getCode(), 404);
-        Assert.assertEquals(oldInfo.getMessage(), "This really sucks");
+        Assert.assertEquals(oldInfo.get_response().getCode(), 404);
+        Assert.assertEquals(oldInfo.get_response().getMessage(), "Not Found");
     }
-
 }

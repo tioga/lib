@@ -2,30 +2,27 @@ package org.tiogasolutions.lib.jaxrs.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.tiogasolutions.dev.common.exceptions.ExceptionUtils;
+import org.tiogasolutions.dev.common.exceptions.ApiException;
+import org.tiogasolutions.pub.PubItem;
+import org.tiogasolutions.pub.PubLinks;
+import org.tiogasolutions.pub.PubResponse;
 
-public class TiogaExceptionInfo {
+import javax.ws.rs.WebApplicationException;
 
-    private final int code;
-    private final String message;
+public class TiogaExceptionInfo extends PubItem {
 
     @JsonCreator
-    public TiogaExceptionInfo(@JsonProperty("code") int code,
-                              @JsonProperty("message") String message) {
-        this.code = code;
-        this.message = message;
+    public TiogaExceptionInfo(@JsonProperty("_status") PubResponse _response,
+                              @JsonProperty("_links") PubLinks _links) {
+
+        super(_response, _links);
     }
 
-    public TiogaExceptionInfo(int code, Throwable ex) {
-        this.code = code;
-        this.message = ExceptionUtils.getMessage(ex);
+    public TiogaExceptionInfo(ApiException ex) {
+        super(toStatus(ex.getStatusCode()));
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
+    public TiogaExceptionInfo(WebApplicationException ex) {
+        super(toStatus(ex.getResponse().getStatus()));
     }
 }

@@ -10,6 +10,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="tioga-lib-jaxrs_main" />
+    <orderEntry type="module" module-name="tioga-lib-pub_main" />
     <orderEntry type="library" name="Gradle: javax.ws.rs:javax.ws.rs-api:2.0.1" level="project" />
     <orderEntry type="library" name="Gradle: org.tiogasolutions.dev:tioga-dev-jackson:4.2.6" level="project" />
     <orderEntry type="library" name="Gradle: org.testng:testng:6.8.21" level="project" />
