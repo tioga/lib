@@ -39,7 +39,7 @@ public class HalLinkTest {
         String json = writer.writeValueAsString(oldLink);
         HalLink newLink = mapper.readValue(json, HalLink.class);
 
-        Assert.assertEquals(newLink.getHref(), "http://www.example.com/whatever?offset=32");
+        Assert.assertEquals(newLink.getHref().toString(), "http://www.example.com/whatever?offset=32");
         Assert.assertEquals(newLink.getTitle(), null);
         Assert.assertEquals(newLink.isTemplated(), false);
         Assert.assertEquals(newLink.getDeprecation(), null);
@@ -60,7 +60,7 @@ public class HalLinkTest {
         String json = writer.writeValueAsString(oldLink);
         HalLink newLink = mapper.readValue(json, HalLink.class);
 
-        Assert.assertEquals(newLink.getHref(), "http://www.example.com/whatever?offset=32");
+        Assert.assertEquals(newLink.getHref().toString(), "http://www.example.com/whatever?offset=32");
         Assert.assertEquals(newLink.getTitle(), "Some Link");
         Assert.assertEquals(newLink.isTemplated(), false);
         Assert.assertEquals(newLink.getDeprecation(), null);
@@ -82,7 +82,7 @@ public class HalLinkTest {
         String json = writer.writeValueAsString(oldLink);
         HalLink newLink = mapper.readValue(json, HalLink.class);
 
-        Assert.assertEquals(newLink.getHref(), "http://www.example.com/whatever?offset=32");
+        Assert.assertEquals(newLink.getHref().toString(), "http://www.example.com/whatever?offset=32");
         Assert.assertEquals(newLink.getTitle(), null);
         Assert.assertEquals(newLink.isTemplated(), false);
         Assert.assertEquals(newLink.getDeprecation(), null);
@@ -104,7 +104,7 @@ public class HalLinkTest {
         String json = writer.writeValueAsString(oldLink);
         HalLink newLink = mapper.readValue(json, HalLink.class);
 
-        Assert.assertEquals(newLink.getHref(), "http://www.example.com/whatever?offset=32");
+        Assert.assertEquals(newLink.getHref().toString(), "http://www.example.com/whatever?offset=32");
         Assert.assertEquals(newLink.getTitle(), "Some Link");
         Assert.assertEquals(newLink.isTemplated(), false);
         Assert.assertEquals(newLink.getDeprecation(), null);
@@ -126,7 +126,7 @@ public class HalLinkTest {
         String json = writer.writeValueAsString(oldLink);
         HalLink newLink = mapper.readValue(json, HalLink.class);
 
-        Assert.assertEquals(newLink.getHref(), "http://www.example.com/whatever?offset=32");
+        Assert.assertEquals(newLink.getHref().toString(), "http://www.example.com/whatever?offset=32");
         Assert.assertEquals(newLink.getTitle(), null);
         Assert.assertEquals(newLink.isTemplated(), false);
         Assert.assertEquals(newLink.getDeprecation(), "http://www.google.com");
@@ -148,7 +148,7 @@ public class HalLinkTest {
         String json = writer.writeValueAsString(oldLink);
         HalLink newLink = mapper.readValue(json, HalLink.class);
 
-        Assert.assertEquals(newLink.getHref(), "http://www.example.com/whatever?offset=32");
+        Assert.assertEquals(newLink.getHref().toString(), "http://www.example.com/whatever?offset=32");
         Assert.assertEquals(newLink.getTitle(), "A Link");
         Assert.assertEquals(newLink.isTemplated(), true);
         Assert.assertEquals(newLink.getDeprecation(), null);
@@ -172,7 +172,7 @@ public class HalLinkTest {
         String json = writer.writeValueAsString(oldLink);
         HalLink newLink = mapper.readValue(json, HalLink.class);
 
-        Assert.assertEquals(newLink.getHref(), "http://www.example.com/whatever?offset=32");
+        Assert.assertEquals(newLink.getHref().toString(), "http://www.example.com/whatever?offset=32");
         Assert.assertEquals(newLink.getTitle(), "Whatever");
         Assert.assertEquals(newLink.isTemplated(), true);
         Assert.assertEquals(newLink.getDeprecation(), "http://whatever.com");
