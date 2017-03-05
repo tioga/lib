@@ -9,9 +9,13 @@ import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 
+import static org.tiogasolutions.dev.common.EnvUtils.findProperty;
+
 public class HalLink {
 
-    private final String href;
+    public static boolean forceHttps = "true".equals(findProperty("hal_links_force_https", "false"));
+
+    private final URI href;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private final String title;
@@ -84,13 +88,19 @@ public class HalLink {
     }
 
     @JsonCreator
-    protected HalLink(@JsonProperty("href") String href,
+    protected HalLink(@JsonProperty("href") URI href,
                       @JsonProperty("title") String title,
                       @JsonProperty("templated") boolean templated,
                       @JsonProperty("deprecation") String deprecation,
                       @JsonProperty("curies") List<HalCurie> curies) {
 
-        this.href = href;
+        if (forceHttps && "http".equals(href.getScheme())) {
+            String uri = "https" + href.toString().substring(4);
+            this.href = URI.create(uri);
+        } else {
+            this.href = href;
+        }
+
         this.title = title;
         this.templated = templated;
         this.deprecation = deprecation;
@@ -99,13 +109,8 @@ public class HalLink {
         this.curies = Collections.unmodifiableList(curies);
     }
 
-    public String getHref() {
+    public URI getHref() {
         return href;
-    }
-
-    @JsonIgnore
-    public URI getHrefUri() {
-        return URI.create(href);
     }
 
     public String getTitle() {
@@ -163,20 +168,20 @@ public class HalLink {
     }
 
     public static HalLink create(URI href) {
-        String url = href.toString();
-        return new HalLink(url, null, false, null, null);
-    }
-
-    public static HalLink create(String href) {
         return new HalLink(href, null, false, null, null);
     }
 
+    public static HalLink create(String href) {
+        URI uri = URI.create(href);
+        return new HalLink(uri, null, false, null, null);
+    }
+
     public static HalLink create(URI href, String title) {
-        String url = href.toString();
-        return new HalLink(url, title, false, null, null);
+        return new HalLink(href, title, false, null, null);
     }
 
     public static HalLink create(String href, String title) {
-        return new HalLink(href, title, false, null, null);
+        URI uri = URI.create(href);
+        return new HalLink(uri, title, false, null, null);
     }
 }

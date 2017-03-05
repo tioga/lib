@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.tiogasolutions.lib.hal.HalLink;
 
 import java.net.URI;
 
@@ -13,6 +12,25 @@ public class HalLinkTest {
 
     private final ObjectMapper mapper = new ObjectMapper();
     private final ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter();
+
+    public void testForceHttps() throws Exception {
+
+        HalLink link = HalLink.create("http://www.example.com/whatever?offset=32");
+        Assert.assertEquals(link.getHref().toString(), "http://www.example.com/whatever?offset=32");
+
+        HalLink.forceHttps = true;
+
+        try {
+            link = HalLink.create("http://www.example.com/whatever?offset=32");
+            Assert.assertEquals(link.getHref().toString(), "https://www.example.com/whatever?offset=32");
+
+        } finally {
+            HalLink.forceHttps = false;
+        }
+
+        link = HalLink.create("http://www.example.com/whatever?offset=32");
+        Assert.assertEquals(link.getHref().toString(), "http://www.example.com/whatever?offset=32");
+    }
 
     public void testCreateWithHref() throws Exception {
 
