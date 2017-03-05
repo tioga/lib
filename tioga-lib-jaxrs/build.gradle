@@ -15,7 +15,7 @@
  */
 project(':tioga-lib-jaxrs') {
 
-    version = "5.1.10"
+    version = "5.1.11"
 
     dependencies {
         compile(project(":tioga-lib-hal"))
