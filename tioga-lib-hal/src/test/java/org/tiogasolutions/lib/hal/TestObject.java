@@ -1,20 +1,18 @@
-package org.tiogasolutions.pub;
+package org.tiogasolutions.lib.hal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TestObject {
 
-    public enum Status{ALIVE, DEAD}
-
     private final String firstName;
     private final String lastName;
     private final int age;
-    private final Status status;
+    private final TestItemStatus status;
 
     public TestObject(@JsonProperty("firstName") String firstName,
                       @JsonProperty("lastName") String lastName,
                       @JsonProperty("age") int age,
-                      @JsonProperty("status") Status status) {
+                      @JsonProperty("status") TestItemStatus status) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,7 +32,7 @@ public class TestObject {
         return age;
     }
 
-    public Status getStatus() {
+    public TestItemStatus getStatus() {
         return status;
     }
 }

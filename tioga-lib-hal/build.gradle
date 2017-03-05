@@ -13,19 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-project(':tioga-lib-jaxrs') {
+project(':tioga-lib-hal') {
 
-    version = "5.1.9"
+    version = "0.0.1"
 
     dependencies {
-        compile(project(":tioga-lib-hal"))
-        compile("javax.ws.rs:javax.ws.rs-api:2.0.1")
         compile("org.tiogasolutions.dev:tioga-dev-jackson:+")
 
+        testCompile("org.tiogasolutions.dev:tioga-dev-jackson:+")
         testCompile("org.testng:testng:6.8.21")
-        testCompile("org.tiogasolutions.dev:tioga-dev-testing:+")
-        testCompile("org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.22.2")
-        testCompile("org.glassfish.jersey.core:jersey-common:2.22.2")
     }
 
     apply(from: urlCache.get("https://raw.githubusercontent.com/tioga/build-scripts/master/build-config-deployer.gradle"))

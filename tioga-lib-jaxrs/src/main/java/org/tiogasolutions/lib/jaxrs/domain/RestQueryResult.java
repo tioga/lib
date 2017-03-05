@@ -51,7 +51,7 @@ public class RestQueryResult<T> implements QueryResult<T> {
       last = null;
 
     } else {
-      // If we are not empty, the first is always index 0.
+      // If we are not builder, the first is always index 0.
       first = build(uriInfo, path, 0, limit);
 
       // We cannot have a last page if the total is not exact.

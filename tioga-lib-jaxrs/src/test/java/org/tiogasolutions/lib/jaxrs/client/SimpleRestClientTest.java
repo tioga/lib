@@ -76,7 +76,7 @@ public class SimpleRestClientTest {
                 java.time.LocalDateTime.parse("1975-05-06T12:32:13.333"),
                 java.time.ZonedDateTime.parse("1975-05-06T12:32:13.333-07:00[America/Los_Angeles]"),
 
-                new TraitMap("first:no", "empty-value:", "null-value", "last:yes"),
+                new TraitMap("first:no", "builder-value:", "null-value", "last:yes"),
                 FineMessage.withText("I hate testing!"),
                 (FineMessageSetImpl) new FineMessageSetBuilder()
                         .withText("Are we done yet.")
@@ -262,7 +262,7 @@ public class SimpleRestClientTest {
                 "  \"javaZonedDateTime\" : \"1997-07-11T01:32:13.333-07:00[America/Los_Angeles]\",\n" +
 
                 "  \"traitMap\" : {\n" +
-                "    \"empty-value\" : \"\",\n" +
+                "    \"builder-value\" : \"\",\n" +
                 "    \"first\" : \"yes\",\n" +
                 "    \"last\" : \"ok\",\n" +
                 "    \"null-value\" : null\n" +
@@ -309,7 +309,7 @@ public class SimpleRestClientTest {
         TraitMap traitMap = freeBird.getTraitMap();
         assertNotNull(traitMap);
         assertEquals(traitMap.getValue("first"), "yes");
-        assertEquals(traitMap.getValue("empty-value"), "");
+        assertEquals(traitMap.getValue("builder-value"), "");
         assertEquals(traitMap.getValue("null-value"), null);
         assertEquals(traitMap.getValue("last"), "ok");
         assertEquals(traitMap.getSize(), 4);

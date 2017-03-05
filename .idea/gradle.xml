@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/tioga-lib-couchace" />
+            <option value="$PROJECT_DIR$/tioga-lib-hal" />
             <option value="$PROJECT_DIR$/tioga-lib-jaxrs" />
             <option value="$PROJECT_DIR$/tioga-lib-joda" />
             <option value="$PROJECT_DIR$/tioga-lib-pub" />

@@ -16,6 +16,8 @@
     <bytecodeTargetLevel>
       <module name="tioga-lib-couchace_main" target="1.8" />
       <module name="tioga-lib-couchace_test" target="1.8" />
+      <module name="tioga-lib-hal_main" target="1.8" />
+      <module name="tioga-lib-hal_test" target="1.8" />
       <module name="tioga-lib-jaxrs_main" target="1.8" />
       <module name="tioga-lib-jaxrs_test" target="1.8" />
       <module name="tioga-lib-joda_main" target="1.8" />

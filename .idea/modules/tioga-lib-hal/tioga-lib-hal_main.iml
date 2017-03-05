@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id=":tioga-lib-jaxrs:main" external.linked.project.path="$MODULE_DIR$/../../../tioga-lib-jaxrs" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="org.tiogasolutions.lib" external.system.module.type="sourceSet" external.system.module.version="5.1.8" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":tioga-lib-hal:main" external.linked.project.path="$MODULE_DIR$/../../../tioga-lib-hal" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="org.tiogasolutions.lib" external.system.module.type="sourceSet" external.system.module.version="0.0.1" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/../../../tioga-lib-jaxrs/build/classes/main" />
+    <output url="file://$MODULE_DIR$/../../../tioga-lib-hal/build/classes/main" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../../tioga-lib-jaxrs/src/main">
-      <sourceFolder url="file://$MODULE_DIR$/../../../tioga-lib-jaxrs/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../tioga-lib-jaxrs/src/main/resources" type="java-resource" />
+    <content url="file://$MODULE_DIR$/../../../tioga-lib-hal/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../tioga-lib-hal/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../tioga-lib-hal/src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="tioga-lib-hal_main" />
-    <orderEntry type="library" name="Gradle: javax.ws.rs:javax.ws.rs-api:2.0.1" level="project" />
     <orderEntry type="library" name="Gradle: org.tiogasolutions.dev:tioga-dev-jackson:4.2.6" level="project" />
     <orderEntry type="library" name="Gradle: org.tiogasolutions.dev:tioga-dev-domain:4.2.6" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.5.1" level="project" />

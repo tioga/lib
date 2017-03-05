@@ -15,7 +15,7 @@
  */
 project(':tioga-lib-pub') {
 
-    version = "1.0.1"
+    version = "1.0.2.DEPRECATED"
 
     dependencies {
         compile("org.tiogasolutions.dev:tioga-dev-jackson:+")

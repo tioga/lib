@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.tiogasolutions.dev.common.exceptions.ApiException;
 import org.tiogasolutions.dev.common.net.HttpStatusCode;
 import org.tiogasolutions.lib.jaxrs.domain.TiogaExceptionInfo;
-import org.tiogasolutions.pub.PubItem;
-import org.tiogasolutions.pub.PubLinks;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
@@ -44,8 +42,8 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
     public Response toResponse(Throwable ex) {
 
         if (exceptionMap.containsKey(ex.getClass())) {
-            int status = exceptionMap.get(ex.getClass());
-            return throwableToResponse(status, ex);
+            int statusCode = exceptionMap.get(ex.getClass());
+            return throwableToResponse(statusCode, ex);
         }
 
         if (ex instanceof ApiException) {
@@ -60,50 +58,61 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
             }
         }
 
+        // Before giving up, check the exception's causes for
+        // a better response (just in case it got wrapped)
+        while (ex.getCause() != null && ex.getCause() != ex) {
+            ex = ex.getCause();
+            if (ex instanceof ApiException) {
+                return toResponse(ex);
+            } else if (ex instanceof WebApplicationException) {
+                return toResponse(ex);
+            } else if (exceptionMap.containsKey(ex.getClass())) {
+                return toResponse(ex);
+            }
+        }
+
         return throwableToResponse(500, ex);
     }
 
     protected Response apiExceptionToResponse(ApiException ex) {
-        int status = ex.getHttpStatusCode().getCode();
-        logException(ex, status);
+        int statusCode = ex.getHttpStatusCode().getCode();
+        logException(ex, statusCode);
 
         TiogaExceptionInfo exceptionInfo = new TiogaExceptionInfo(ex);
-        return exceptionInfoToResponse(exceptionInfo);
+        return exceptionInfoToResponse(statusCode, exceptionInfo);
     }
 
     protected Response webApplicationExceptionToResponse(WebApplicationException ex) {
-        int status = ex.getResponse().getStatus();
-        logException(ex, status);
+        int statusCode = ex.getResponse().getStatus();
+        logException(ex, statusCode);
 
         TiogaExceptionInfo exceptionInfo = new TiogaExceptionInfo(ex);
-        return exceptionInfoToResponse(exceptionInfo);
+        return exceptionInfoToResponse(statusCode, exceptionInfo);
     }
 
-    protected Response throwableToResponse(int status, Throwable ex) {
-        logException(ex, status);
+    protected Response throwableToResponse(int statusCode, Throwable ex) {
+        HttpStatusCode hsc = HttpStatusCode.findByCode(statusCode);
+        logException(ex, statusCode);
 
-        TiogaExceptionInfo exceptionInfo = new TiogaExceptionInfo(
-                PubItem.toStatus(status),
-                PubLinks.empty());
-        return exceptionInfoToResponse(exceptionInfo);
+        TiogaExceptionInfo exceptionInfo = new TiogaExceptionInfo(hsc.getCode(), hsc.getReason());
+        return exceptionInfoToResponse(statusCode, exceptionInfo);
     }
 
-    protected Response exceptionInfoToResponse(TiogaExceptionInfo exceptionInfo) {
-        int status = exceptionInfo.get_response().getCode();
-        return Response.status(status)
+    protected Response exceptionInfoToResponse(int statusCode, TiogaExceptionInfo exceptionInfo) {
+        return Response.status(statusCode)
                 .entity(exceptionInfo)
                 .type(MediaType.APPLICATION_JSON_TYPE)
                 .build();
     }
 
-    protected void logException(Throwable throwable, int status) {
-        String msg = "Status " + status;
+    protected void logException(Throwable throwable, int statusCode) {
+        String msg = "Status " + statusCode;
         if (uriInfo != null) {
             msg += " ";
             msg += uriInfo.getRequestUri();
         }
 
-        if (status >= 400 && status < 500) {
+        if (statusCode >= 400 && statusCode < 500) {
             log4xxException(msg, throwable);
         } else {
             log5xxException(msg, throwable);

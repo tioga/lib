@@ -129,7 +129,7 @@ public class FreeBirdRestController {
         DateUtils.toLocalDateTime("1975-05-06T10:32:13.222"),
         DateUtils.toZonedDateTime("1997-07-11T01:32:13.333-07:00[America/Los_Angeles]"),
 
-        new TraitMap("first:yes", "empty-value:", "null-value", "last:ok"),
+        new TraitMap("first:yes", "builder-value:", "null-value", "last:ok"),
         FineMessage.withText("This message is fine!"),
         (FineMessageSetImpl) new FineMessageSetBuilder()
             .withText(firstMessage)
