@@ -36,6 +36,7 @@ subprojects {
     sourceCompatibility = "1.8"
 
     configurations.all({
+        // noinspection GroovyAssignabilityCheck
         resolutionStrategy {
             if (System.getProperty("no-fail-version-conflict") != "true") {
                 failOnVersionConflict()
