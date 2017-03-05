@@ -13,23 +13,90 @@ public class HalLinkTest {
     private final ObjectMapper mapper = new ObjectMapper();
     private final ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter();
 
-    public void testForceHttps() throws Exception {
+    public void testForceHttpsOff() throws Exception {
+        HalLink link = HalLink.create("http://username:secret@www.example.com:80/whatever?offset=32");
+        Assert.assertEquals(link.getHref().toString(), "http://username:secret@www.example.com:80/whatever?offset=32");
 
-        HalLink link = HalLink.create("http://www.example.com/whatever?offset=32");
+        link = HalLink.create("https://username:secret@www.example.com:80/whatever?offset=32");
+        Assert.assertEquals(link.getHref().toString(), "https://username:secret@www.example.com:80/whatever?offset=32");
+
+        link = HalLink.create("http://www.example.com:80/whatever?offset=32");
+        Assert.assertEquals(link.getHref().toString(), "http://www.example.com:80/whatever?offset=32");
+
+        link = HalLink.create("http://www.example.com:80/whatever");
+        Assert.assertEquals(link.getHref().toString(), "http://www.example.com:80/whatever");
+
+        link = HalLink.create("http://www.example.com:80/");
+        Assert.assertEquals(link.getHref().toString(), "http://www.example.com:80/");
+
+        link = HalLink.create("http://www.example.com:80");
+        Assert.assertEquals(link.getHref().toString(), "http://www.example.com:80");
+
+        link = HalLink.create("http://username:secret@www.example.com/whatever?offset=32");
+        Assert.assertEquals(link.getHref().toString(), "http://username:secret@www.example.com/whatever?offset=32");
+
+        link = HalLink.create("https://username:secret@www.example.com/whatever?offset=32");
+        Assert.assertEquals(link.getHref().toString(), "https://username:secret@www.example.com/whatever?offset=32");
+
+        link = HalLink.create("http://www.example.com/whatever?offset=32");
         Assert.assertEquals(link.getHref().toString(), "http://www.example.com/whatever?offset=32");
 
+        link = HalLink.create("http://www.example.com/whatever");
+        Assert.assertEquals(link.getHref().toString(), "http://www.example.com/whatever");
+
+        link = HalLink.create("http://www.example.com/");
+        Assert.assertEquals(link.getHref().toString(), "http://www.example.com/");
+
+        link = HalLink.create("http://www.example.com");
+        Assert.assertEquals(link.getHref().toString(), "http://www.example.com");
+    }
+
+    public void testForceHttpsOn() throws Exception {
+
+        HalLink link;
         HalLink.forceHttps = true;
 
         try {
+
+            link = HalLink.create("http://username:secret@www.example.com:80/whatever?offset=32");
+            Assert.assertEquals(link.getHref().toString(), "https://username:secret@www.example.com:443/whatever?offset=32");
+
+            link = HalLink.create("https://username:secret@www.example.com:80/whatever?offset=32");
+            Assert.assertEquals(link.getHref().toString(), "https://username:secret@www.example.com:80/whatever?offset=32");
+
+            link = HalLink.create("http://www.example.com:80/whatever?offset=32");
+            Assert.assertEquals(link.getHref().toString(), "https://www.example.com:443/whatever?offset=32");
+
+            link = HalLink.create("http://www.example.com:80/whatever");
+            Assert.assertEquals(link.getHref().toString(), "https://www.example.com:443/whatever");
+
+            link = HalLink.create("http://www.example.com:80/");
+            Assert.assertEquals(link.getHref().toString(), "https://www.example.com:443/");
+
+            link = HalLink.create("http://www.example.com:80");
+            Assert.assertEquals(link.getHref().toString(), "https://www.example.com:443");
+
+            link = HalLink.create("http://username:secret@www.example.com/whatever?offset=32");
+            Assert.assertEquals(link.getHref().toString(), "https://username:secret@www.example.com:443/whatever?offset=32");
+
+            link = HalLink.create("https://username:secret@www.example.com/whatever?offset=32");
+            Assert.assertEquals(link.getHref().toString(), "https://username:secret@www.example.com/whatever?offset=32");
+
             link = HalLink.create("http://www.example.com/whatever?offset=32");
-            Assert.assertEquals(link.getHref().toString(), "https://www.example.com/whatever?offset=32");
+            Assert.assertEquals(link.getHref().toString(), "https://www.example.com:443/whatever?offset=32");
+
+            link = HalLink.create("http://www.example.com/whatever");
+            Assert.assertEquals(link.getHref().toString(), "https://www.example.com:443/whatever");
+
+            link = HalLink.create("http://www.example.com/");
+            Assert.assertEquals(link.getHref().toString(), "https://www.example.com:443/");
+
+            link = HalLink.create("http://www.example.com");
+            Assert.assertEquals(link.getHref().toString(), "https://www.example.com:443");
 
         } finally {
             HalLink.forceHttps = false;
         }
-
-        link = HalLink.create("http://www.example.com/whatever?offset=32");
-        Assert.assertEquals(link.getHref().toString(), "http://www.example.com/whatever?offset=32");
     }
 
     public void testCreateWithHref() throws Exception {

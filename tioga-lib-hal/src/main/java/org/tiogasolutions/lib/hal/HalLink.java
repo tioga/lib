@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.tiogasolutions.dev.common.StringUtils;
 
 import java.net.URI;
 import java.util.Collections;
@@ -14,6 +15,7 @@ import static org.tiogasolutions.dev.common.EnvUtils.findProperty;
 public class HalLink {
 
     public static boolean forceHttps = "true".equals(findProperty("hal_links_force_https", "false"));
+    public static int httpsPort = Integer.valueOf(findProperty("hal_links_https_port", "443"));
 
     private final URI href;
 
@@ -95,8 +97,22 @@ public class HalLink {
                       @JsonProperty("curies") List<HalCurie> curies) {
 
         if (forceHttps && "http".equals(href.getScheme())) {
-            String uri = "https" + href.toString().substring(4);
-            this.href = URI.create(uri);
+            int pos = href.toString().indexOf("/", 8);
+
+            String newUri = "https://";
+            if (StringUtils.isNotBlank(href.getUserInfo())) {
+                newUri += href.getUserInfo();
+                newUri += "@";
+            }
+            newUri += href.getHost();
+            newUri += ":";
+            newUri += httpsPort;
+
+            String remainder = (pos < 0) ? "" : href.toString().substring(pos);
+            newUri += remainder;
+
+            this.href = URI.create(newUri);
+
         } else {
             this.href = href;
         }
