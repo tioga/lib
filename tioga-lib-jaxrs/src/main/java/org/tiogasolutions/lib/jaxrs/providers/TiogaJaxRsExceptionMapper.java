@@ -113,18 +113,19 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
         }
 
         if (statusCode >= 400 && statusCode < 500) {
-            log4xxException(msg, throwable);
+            log4xxException(msg, throwable, statusCode);
         } else {
-            log5xxException(msg, throwable);
+            log5xxException(msg, throwable, statusCode);
         }
     }
 
     @SuppressWarnings("UnusedParameters")
-    protected void log4xxException(String msg, Throwable throwable) {
+    protected void log4xxException(String msg, Throwable throwable, int statusCode) {
         log.info(msg);
     }
 
-    protected void log5xxException(String msg, Throwable throwable) {
+    @SuppressWarnings("UnusedParameters")
+    protected void log5xxException(String msg, Throwable throwable, int statusCode) {
         log.error(msg, throwable);
     }
 }

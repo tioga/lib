@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 project(':tioga-lib-spring-security') {
-    version = "4.2.6"
+    version = "5.0.0"
 
     dependencies {
         compile("org.tiogasolutions.lib:tioga-lib-jaxrs:+")
