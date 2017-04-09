@@ -134,7 +134,7 @@ public abstract class DefaultCouchStore<T>{
   }
 
   protected List<T> getEntities(String viewName) {
-    return getEntities(viewName);
+    return getEntities(viewName, Collections.emptyList());
   }
 
   protected List<T> getEntities(String viewName, String... keyValues) {
