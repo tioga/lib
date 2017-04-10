@@ -7,13 +7,12 @@ import org.tiogasolutions.dev.common.net.HttpStatusCode;
 import org.tiogasolutions.lib.jaxrs.domain.TiogaExceptionInfo;
 
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.*;
 import javax.ws.rs.ext.ExceptionMapper;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.util.Collections.unmodifiableMap;
 
 public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throwable> {
 
@@ -22,10 +21,25 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
     @Context
     protected UriInfo uriInfo;
 
+    @Context
+    protected Request request;
+
     private final Map<Class<?>, Integer> exceptionMap = new HashMap<>();
 
     public TiogaJaxRsExceptionMapper() {
         log.info("Created.");
+    }
+
+    public UriInfo getUriInfo() {
+        return uriInfo;
+    }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public Map<Class<?>, Integer> getExceptionMap() {
+        return unmodifiableMap(exceptionMap);
     }
 
     public void registerException(HttpStatusCode httpStatus, Class<?>... types) {
