@@ -21,9 +21,6 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
     @Context
     protected UriInfo uriInfo;
 
-    @Context
-    protected Request request;
-
     private final Map<Class<?>, Integer> exceptionMap = new HashMap<>();
 
     public TiogaJaxRsExceptionMapper() {
@@ -32,10 +29,6 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
 
     public UriInfo getUriInfo() {
         return uriInfo;
-    }
-
-    public Request getRequest() {
-        return request;
     }
 
     public Map<Class<?>, Integer> getExceptionMap() {
