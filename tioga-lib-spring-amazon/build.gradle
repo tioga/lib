@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 project(':tioga-lib-spring-amazon') {
-    version = "1.1.5"
+    version = "1.1.6"
 
     dependencies {
         compile("org.tiogasolutions.dev:tioga-dev-common:+")

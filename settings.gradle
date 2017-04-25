@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-include "tioga-lib-thymeleaf", "tioga-lib-servlet", "tioga-lib-jaxrs", "tioga-lib-couchace", "tioga-lib-selenium", "tioga-lib-spring-security", "tioga-lib-joda", "tioga-lib-spring-amazon", "tioga-lib-spring-couchace", "tioga-lib-spring", "tioga-lib-pub", "tioga-lib-hal"
+include "tioga-lib-thymeleaf", "tioga-lib-servlet", "tioga-lib-jaxrs", "tioga-lib-couchace", "tioga-lib-selenium", "tioga-lib-spring-security", "tioga-lib-joda", "tioga-lib-spring-amazon", "tioga-lib-spring-couchace", "tioga-lib-spring", "tioga-lib-hal"

@@ -15,9 +15,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda.iml" group="tioga-lib-joda" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda_main.iml" group="tioga-lib-joda" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-joda/tioga-lib-joda_test.iml" group="tioga-lib-joda" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-pub/tioga-lib-pub.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-pub/tioga-lib-pub.iml" group="tioga-lib-pub" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-pub/tioga-lib-pub_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-pub/tioga-lib-pub_main.iml" group="tioga-lib-pub" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-pub/tioga-lib-pub_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-pub/tioga-lib-pub_test.iml" group="tioga-lib-pub" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium.iml" group="tioga-lib-selenium" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium_main.iml" group="tioga-lib-selenium" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tioga-lib-selenium/tioga-lib-selenium_test.iml" group="tioga-lib-selenium" />

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 project(':tioga-lib-spring') {
-    version = "1.2.3"
+    version = "1.2.4"
 
     dependencies {
         compile("org.tiogasolutions.dev:tioga-dev-common:+")

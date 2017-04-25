@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.tiogasolutions.lib:tioga-lib-jaxrs:6.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.lib/tioga-lib-jaxrs/6.0.2/edad5f477c70d5152fe1fd4687df8009f48c0aa8/tioga-lib-jaxrs-6.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.tiogasolutions.lib/tioga-lib-jaxrs/6.0.2/5721ef44e37dc59c1dba371cefdd938f201a9098/tioga-lib-jaxrs-6.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
