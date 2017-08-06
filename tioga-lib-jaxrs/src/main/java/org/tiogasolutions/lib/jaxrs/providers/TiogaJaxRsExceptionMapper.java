@@ -9,6 +9,7 @@ import org.tiogasolutions.lib.jaxrs.domain.TiogaExceptionInfo;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.*;
 import javax.ws.rs.ext.ExceptionMapper;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -134,5 +135,23 @@ public abstract class TiogaJaxRsExceptionMapper implements ExceptionMapper<Throw
     @SuppressWarnings("UnusedParameters")
     protected void log5xxException(String msg, Throwable throwable, int statusCode) {
         log.error(msg, throwable);
+    }
+
+    /**
+     * Need to alter the URI so that it's technically not valid.
+     * Slack will re-fetch this URI if we include it here.
+     * @param uri The URI to be cleaned.
+     * @return The URI minus the prefix http:// or https://
+     */
+    public static String cleanUrl(URI uri) {
+        if (uri == null) {
+            return null;
+        } else if (uri.toASCIIString().toLowerCase().startsWith("http://")) {
+            return uri.toASCIIString().substring(7);
+        } else if (uri.toASCIIString().toLowerCase().startsWith("https://")) {
+            return uri.toASCIIString().substring(8);
+        } else {
+            return uri.toASCIIString();
+        }
     }
 }
